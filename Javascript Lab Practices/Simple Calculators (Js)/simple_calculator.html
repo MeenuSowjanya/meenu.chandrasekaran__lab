@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .container1 {
+            margin-left: 550px;
+            margin-top: 200px;
+            width: 650px;
+            height: 500px;
+            background-color: rgb(230, 137, 137);
+            border-radius: 20px;
+        }
+
+        input {
+            width: 500px;
+            border-radius: 10px;
+            height: 60px;
+            margin-left: 50px;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            padding-left: 55px;
+            ;
+        }
+
+        select {
+            width: 120px;
+            height: 40px;
+            border-radius: 90px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 250px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            height: 60px;
+            width: 150px;
+            background-color: rgb(16, 16, 136);
+            color: white;
+            border-radius: 10px;
+            font-size: 25px;
+            margin-left: 240px;
+            margin-top: 30px;
+        }
+
+        .child {
+            width: 170px;
+            height: 45px;
+            background-color: white;
+            margin-left: 170px;
+            border-radius: 19px;
+            margin-top: 30px;
+            font-size: 27px;
+            color: rgba(0, 0, 255, 0.904);
+            padding-left: 120px;
+            padding-top:30px;
+            font-weight: bold;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container1">
+        <form onsubmit="myAnswer()">
+            <input type="number" id="firstInput" placeholder="Enter the first number" >
+            <br>
+            <select id="Operator">
+
+                <option id="Plus">+</option>
+                <option id="Minus">-</option>
+                <option id="Into">X</option>
+                <option id="Slash">/</option>
+            </select>
+            <br>
+            <input type="number" id="secondInput" placeholder="Enter the second number" ><br>
+            <button type="submit" id="submitbutton"> Calculate </button>
+             
+        </form>
+        <div class="child" id="answer1">
+
+        </div>
+    </div>
+    <script>
+
+        function myAnswer() {
+
+            event.preventDefault();
+            const number1 = document.getElementById("firstInput").value;
+            const number2 = document.getElementById("secondInput").value;
+            const operator = document.getElementById("Operator").value;
+
+            let answer;
+                switch (operator) {
+                    case "+":
+                         
+                        answer= (+number1+ +number2);
+                        break;
+                    case "-":
+                         
+                        answer= (+number1- +number2);
+                        break;
+                    case "X":
+                         
+                        answer= (+number1* (+number2));
+                        break;
+                    case "/":
+                         
+                        answer= (+number1/(+number2));
+                        break;
+
+
+                }
+              
+               
+            const div = document.getElementById("answer1");
+            div.innerText = answer;}
+        
+    </script>
+</body>
+
+</html>

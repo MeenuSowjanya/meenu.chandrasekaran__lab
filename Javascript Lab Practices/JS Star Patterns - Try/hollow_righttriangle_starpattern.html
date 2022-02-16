@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <script>
+            let  number_of_columns=parseInt(prompt("Enter the number of columns :"));
+            let star=" ";
+            for(i=1;i<=number_of_columns;i++){
+                for(j=0;j<i;j++){
+                    if(i===(number_of_columns)){
+                        star+="*";
+                    }
+                    else{
+                        if(j===0||j===i-1){
+                            star+="*";
+                        }
+                        else{
+                            star+="&nbsp;&nbsp";
+                        };
+                    };
+
+                };
+                star+="<br>";
+            };
+            document.write(star);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <script>
+            let number_of_rows_or_columns=parseInt(prompt("Enter number of rows or columns :"));
+            let star=" ";
+            //for columns
+            for(i=0;i<number_of_rows_or_columns;i++){
+                //for rows
+                for(j=0;j<number_of_rows_or_columns;j++){
+                if(i===0||i===(number_of_rows_or_columns-1)){
+                    star+="*";
+                }
+                else{
+                    if(j===0||j===(number_of_rows_or_columns-1)){
+                      star+="*";
+                    }
+                    else{
+                        star+="&nbsp;&nbsp";
+                    };
+                };
+                };
+                star+="<br>";
+            }
+            document.write(star);
+        </script>
+    </body>
+</html>
