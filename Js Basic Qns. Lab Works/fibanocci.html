@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        // //Program to print fibanocci series
+        let no_of_terms = parseInt(prompt("Enter number of terms :"));
+        let term1 = 0;
+        let term2 = 1;
+        let count = 0;
+        let sum;
+        if (no_of_terms <= 0) {
+            console.log("Please enter positive number of terms")
+        }
+        else if (no_of_terms == 1) {
+            document.write(`Fibanocci series for ${no_of_terms}  number of terms is ${a}`)
+        }
+        else {
+            document.write(`FIBANOCCI SERIES FOR ${no_of_terms}  NUMBER OF TERMS`);
+            while (count < no_of_terms) {
+                document.write("<br>")
+                document.write(term1);
+                sum = (term1 + term2);
+                term1 = term2;
+                term2 = sum;
+                count++;
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

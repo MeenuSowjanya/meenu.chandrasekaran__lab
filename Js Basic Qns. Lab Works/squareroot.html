@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            //Program to find square root of a perfect square
+            let number=parseInt(prompt("Enter the number :"));
+            
+            function square(num1){
+               for(i=1;i<=num1;i++){
+                  if((i**2)==num1){
+                       document.write(`The square root of the given perfect number ${number}  is  ${i}`)
+                  };
+               };
+            };
+            if(number>0){
+                  square(number);
+                 
+            };
+            //Program to find square root of any number
+            console.log((number)**(0.5));
+            
+            
+            //Program to find sq. root of every number using math module
+            
+            function math(num1){
+                document.write(`The square root of the give number ${number}  is ${(Math.sqrt(number))}`);
+            }
+            if(number>0){
+                math(number)
+            }
+            
+            
+        </script>
+    </body>
+</html>

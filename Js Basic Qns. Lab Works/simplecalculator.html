@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+           // program for a simple calculator
+           let answer=0;
+           let operator=prompt("Enter the operator from (+,-,*,/,% or **) :");
+           let no1=parseInt(prompt("Enter number 1 :"));
+           let no2=parseInt(prompt("Enter number 2 :"));
+           switch(operator){
+               case "+":
+               answer=((no1)+(no2));
+               break;
+               case "-":
+               answer=((no1)-(no2));
+               break;
+               case "*":
+               answer=((no1)*(no2));
+               break;
+               case "/":
+               answer=((no1)/(no2));
+               break;
+               case "**":
+               answer=((no1)**(no2));
+               break;
+               case "%":
+               answer=((no1)%(no2));
+               break;
+           }
+           document.write(`The answer for the operation ${(no1)} ${operator} ${(no2)} is : ${answer}`);
+
+         
+        </script>
+    </body>
+</html>
