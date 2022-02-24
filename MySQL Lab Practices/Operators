@@ -1,0 +1,181 @@
+mysql> use Supply;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SELECT 4+3,4-3,4*3,4/3,4%3; /* ARITHMETIC OPERATORS */
++-----+-----+-----+--------+------+
+| 4+3 | 4-3 | 4*3 | 4/3    | 4%3  |
++-----+-----+-----+--------+------+
+|   7 |   1 |  12 | 1.3333 |    1 |
++-----+-----+-----+--------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT 1 AND 0,1 AND 1,1 AND NULL,0 AND NULL;
++---------+---------+------------+------------+
+| 1 AND 0 | 1 AND 1 | 1 AND NULL | 0 AND NULL |
++---------+---------+------------+------------+
+|       0 |       1 |       NULL |          0 |
++---------+---------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT 1 OR 0,1 OR 1,1 OR NULL,0 OR NULL;
++--------+--------+-----------+-----------+
+| 1 OR 0 | 1 OR 1 | 1 OR NULL | 0 OR NULL |
++--------+--------+-----------+-----------+
+|      1 |      1 |         1 |      NULL |
++--------+--------+-----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT 1 XOR 0,1 XOR 1,0 OR 0,0 XOR NULL,1 XOR NULL,1 XOR 1 XOR 1;
++---------+---------+--------+------------+------------+---------------+
+| 1 XOR 0 | 1 XOR 1 | 0 OR 0 | 0 XOR NULL | 1 XOR NULL | 1 XOR 1 XOR 1 |
++---------+---------+--------+------------+------------+---------------+
+|       1 |       0 |      0 |       NULL |       NULL |             1 |
++---------+---------+--------+------------+------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT NOT((1 OR 0) AND (1 XOR 1));
++-----------------------------+
+| NOT((1 OR 0) AND (1 XOR 1)) |
++-----------------------------+
+|                           1 |
++-----------------------------+
+1 row in set (0.01 sec)
+
+
+mysql> SELECT * FROM suppliers WHERE supplier_name LIKE("R%") OR supplier_name LIKE("%P");
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM suppliers WHERE supplier_no< ANY(SELECT quantity_supplied FROM shipments);
++-------------+---------------+--------+------------+
+| supplier_no | supplier_name | status | city       |
++-------------+---------------+--------+------------+
+| S1          | Britannia     |     10 | Delhi      |
+| S2          | New Bakers    |     12 | Bangalore  |
+| S3          | Cookz         |     10 | Delhi      |
+| S4          | Haldiram      |     12 | Tamil Nadu |
+| S5          | Parle         |     30 | Telangana  |
+| S6          | Good Day      |     32 | Tamil Nadu |
++-------------+---------------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM suppliers WHERE supplier_no< ALL(SELECT quantity_supplied FROM shipments);
++-------------+---------------+--------+------------+
+| supplier_no | supplier_name | status | city       |
++-------------+---------------+--------+------------+
+| S1          | Britannia     |     10 | Delhi      |
+| S2          | New Bakers    |     12 | Bangalore  |
+| S3          | Cookz         |     10 | Delhi      |
+| S4          | Haldiram      |     12 | Tamil Nadu |
+| S5          | Parle         |     30 | Telangana  |
+| S6          | Good Day      |     32 | Tamil Nadu |
++-------------+---------------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM suppliers WHERE supplier_no in ALL(SELECT quantity_supplied FROM shipments);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ALL(SELECT quantity_supplied FROM shipments)' at line 1
+mysql> SELECT * FROM suppliers WHERE supplier_no in (SELECT quantity_supplied FROM shipments);
+Empty set (0.01 sec)
+
+mysql> SELECT * FROM suppliers WHERE supplier_no not in (SELECT quantity_supplied FROM shipments);
++-------------+---------------+--------+------------+
+| supplier_no | supplier_name | status | city       |
++-------------+---------------+--------+------------+
+| S1          | Britannia     |     10 | Delhi      |
+| S2          | New Bakers    |     12 | Bangalore  |
+| S3          | Cookz         |     10 | Delhi      |
+| S4          | Haldiram      |     12 | Tamil Nadu |
+| S5          | Parle         |     30 | Telangana  |
+| S6          | Good Day      |     32 | Tamil Nadu |
++-------------+---------------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM suppliers WHERE exists (SELECT quantity_supplied FROM shipments where item_no in ("S3","S6"));
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM suppliers WHERE not exists (SELECT quantity_supplied FROM shipments where item_no in ("S3","S6"));
++-------------+---------------+--------+------------+
+| supplier_no | supplier_name | status | city       |
++-------------+---------------+--------+------------+
+| S1          | Britannia     |     10 | Delhi      |
+| S2          | New Bakers    |     12 | Bangalore  |
+| S3          | Cookz         |     10 | Delhi      |
+| S4          | Haldiram      |     12 | Tamil Nadu |
+| S5          | Parle         |     30 | Telangana  |
+| S6          | Good Day      |     32 | Tamil Nadu |
++-------------+---------------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT 1=2,1=1;
++-----+-----+
+| 1=2 | 1=1 |
++-----+-----+
+|   0 |   1 |
++-----+-----+
+1 row in set (0.00 sec)
+
+mysql> SELECT 1>2,1<1,1<>2,1!=1,1<=>1,1<=2,2>=4;
++-----+-----+------+------+-------+------+------+
+| 1>2 | 1<1 | 1<>2 | 1!=1 | 1<=>1 | 1<=2 | 2>=4 |
++-----+-----+------+------+-------+------+------+
+|   0 |   0 |    1 |    0 |     1 |    1 |    0 |
++-----+-----+------+------+-------+------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM suppliers WHERE status BETWEEN 1 AND 3;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM suppliers WHERE status NOT BETWEEN 1 AND 3;
++-------------+---------------+--------+------------+
+| supplier_no | supplier_name | status | city       |
++-------------+---------------+--------+------------+
+| S1          | Britannia     |     10 | Delhi      |
+| S2          | New Bakers    |     12 | Bangalore  |
+| S3          | Cookz         |     10 | Delhi      |
+| S4          | Haldiram      |     12 | Tamil Nadu |
+| S5          | Parle         |     30 | Telangana  |
+| S6          | Good Day      |     32 | Tamil Nadu |
++-------------+---------------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT COALESCE(NULL,NULL,10,NULL,1),GREATEST(1.00787918,9.0939279,1,2,1.2827392793),LEAST(1.3923920,1.2792883,0.487249,0.7293983,6);
++-------------------------------+-------------------------------------------------+-------------------------------------------------+
+| COALESCE(NULL,NULL,10,NULL,1) | GREATEST(1.00787918,9.0939279,1,2,1.2827392793) | LEAST(1.3923920,1.2792883,0.487249,0.7293983,6) |
++-------------------------------+-------------------------------------------------+-------------------------------------------------+
+|                            10 |                                    9.0939279000 |                                       0.4872490 |
++-------------------------------+-------------------------------------------------+-------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT 1 IN (1,2,76283728,"MEENU"), "PRADEEP" NOT IN ("ROHAN","SNEHA","MEENU");
++-----------------------------+--------------------------------------------+
+| 1 IN (1,2,76283728,"MEENU") | "PRADEEP" NOT IN ("ROHAN","SNEHA","MEENU") |
++-----------------------------+--------------------------------------------+
+|                           1 |                                          1 |
++-----------------------------+--------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT 1 IS NOT UNKNOWN, 0 IS NOT UNKNOWN, NULL IS NOT UNKNOWN;
++------------------+------------------+---------------------+
+| 1 IS NOT UNKNOWN | 0 IS NOT UNKNOWN | NULL IS NOT UNKNOWN |
++------------------+------------------+---------------------+
+|                1 |                1 |                   0 |
++------------------+------------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT 1 IS NULL, 0 IS NULL, NULL IS NOT NULL;
++-----------+-----------+------------------+
+| 1 IS NULL | 0 IS NULL | NULL IS NOT NULL |
++-----------+-----------+------------------+
+|         0 |         0 |                0 |
++-----------+-----------+------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT ISNULL(1+1),ISNULL(1/0);
++-------------+-------------+
+| ISNULL(1+1) | ISNULL(1/0) |
++-------------+-------------+
+|           0 |           1 |
++-------------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
