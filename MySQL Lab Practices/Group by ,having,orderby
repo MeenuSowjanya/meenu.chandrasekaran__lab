@@ -1,0 +1,175 @@
+mysql> use Supply;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> select * from suppliers;
++-------------+---------------+--------+------------+
+| supplier_no | supplier_name | status | city       |
++-------------+---------------+--------+------------+
+| S1          | Britannia     |     10 | Delhi      |
+| S2          | New Bakers    |     12 | Bangalore  |
+| S3          | Cookz         |     10 | Delhi      |
+| S4          | Haldiram      |     12 | Tamil Nadu |
+| S5          | Parle         |     30 | Telangana  |
+| S6          | Good Day      |     32 | Tamil Nadu |
++-------------+---------------+--------+------------+
+6 rows in set (0.01 sec)
+
+
+mysql> select * from suppliers order by status asc;
++-------------+---------------+--------+------------+
+| supplier_no | supplier_name | status | city       |
++-------------+---------------+--------+------------+
+| S1          | Britannia     |     10 | Delhi      |
+| S3          | Cookz         |     10 | Delhi      |
+| S2          | New Bakers    |     12 | Bangalore  |
+| S4          | Haldiram      |     12 | Tamil Nadu |
+| S5          | Parle         |     30 | Telangana  |
+| S6          | Good Day      |     32 | Tamil Nadu |
++-------------+---------------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from suppliers order by status desc;
++-------------+---------------+--------+------------+
+| supplier_no | supplier_name | status | city       |
++-------------+---------------+--------+------------+
+| S6          | Good Day      |     32 | Tamil Nadu |
+| S5          | Parle         |     30 | Telangana  |
+| S2          | New Bakers    |     12 | Bangalore  |
+| S4          | Haldiram      |     12 | Tamil Nadu |
+| S1          | Britannia     |     10 | Delhi      |
+| S3          | Cookz         |     10 | Delhi      |
++-------------+---------------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from suppliers order by supplier_no desc;
++-------------+---------------+--------+------------+
+| supplier_no | supplier_name | status | city       |
++-------------+---------------+--------+------------+
+| S6          | Good Day      |     32 | Tamil Nadu |
+| S5          | Parle         |     30 | Telangana  |
+| S4          | Haldiram      |     12 | Tamil Nadu |
+| S3          | Cookz         |     10 | Delhi      |
+| S2          | New Bakers    |     12 | Bangalore  |
+| S1          | Britannia     |     10 | Delhi      |
++-------------+---------------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from suppliers order by supplier_name desc;
++-------------+---------------+--------+------------+
+| supplier_no | supplier_name | status | city       |
++-------------+---------------+--------+------------+
+| S5          | Parle         |     30 | Telangana  |
+| S2          | New Bakers    |     12 | Bangalore  |
+| S4          | Haldiram      |     12 | Tamil Nadu |
+| S6          | Good Day      |     32 | Tamil Nadu |
+| S3          | Cookz         |     10 | Delhi      |
+| S1          | Britannia     |     10 | Delhi      |
++-------------+---------------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from suppliers order by supplier_name;
++-------------+---------------+--------+------------+
+| supplier_no | supplier_name | status | city       |
++-------------+---------------+--------+------------+
+| S1          | Britannia     |     10 | Delhi      |
+| S3          | Cookz         |     10 | Delhi      |
+| S6          | Good Day      |     32 | Tamil Nadu |
+| S4          | Haldiram      |     12 | Tamil Nadu |
+| S2          | New Bakers    |     12 | Bangalore  |
+| S5          | Parle         |     30 | Telangana  |
++-------------+---------------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from suppliers group by city;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'Supply.suppliers.supplier_no' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select count(supplier_name) from suppliers group by city;
++----------------------+
+| count(supplier_name) |
++----------------------+
+|                    2 |
+|                    1 |
+|                    2 |
+|                    1 |
++----------------------+
+4 rows in set (0.00 sec)
+
+mysql> select count(supplier_name),city from suppliers group by city;
++----------------------+------------+
+| count(supplier_name) | city       |
++----------------------+------------+
+|                    2 | Delhi      |
+|                    1 | Bangalore  |
+|                    2 | Tamil Nadu |
+|                    1 | Telangana  |
++----------------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select sum(status),city from suppliers group by city;
++-------------+------------+
+| sum(status) | city       |
++-------------+------------+
+|          20 | Delhi      |
+|          12 | Bangalore  |
+|          44 | Tamil Nadu |
+|          30 | Telangana  |
++-------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select count(supplier_name),city from suppliers group by city having city="Delhi" or city="Tamil Nadu";
++----------------------+------------+
+| count(supplier_name) | city       |
++----------------------+------------+
+|                    2 | Delhi      |
+|                    2 | Tamil Nadu |
++----------------------+------------+
+2 rows in set (0.00 sec)
+
+
+mysql> select count(supplier_name),city from suppliers group by city having city LIKE "%i";
++----------------------+-------+
+| count(supplier_name) | city  |
++----------------------+-------+
+|                    2 | Delhi |
++----------------------+-------+
+1 row in set (0.01 sec)
+
+mysql> select count(supplier_name),city from suppliers group by city where city="Delhi" or city="Tamil Nadu";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where city="Delhi" or city="Tamil Nadu"' at line 1
+
+mysql> select city from suppliers;
++------------+
+| city       |
++------------+
+| Delhi      |
+| Bangalore  |
+| Delhi      |
+| Tamil Nadu |
+| Telangana  |
+| Tamil Nadu |
++------------+
+6 rows in set (0.00 sec)
+
+mysql> select distinct(city) from suppliers;
++------------+
+| city       |
++------------+
+| Delhi      |
+| Bangalore  |
+| Tamil Nadu |
+| Telangana  |
++------------+
+4 rows in set (0.00 sec)
+
+mysql> select count(distinct(city)) from suppliers;
++-----------------------+
+| count(distinct(city)) |
++-----------------------+
+|                     4 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(distinct(city)),city from suppliers;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'Supply.suppliers.city'; this is incompatible with sql_mode=only_full_group_by
+
