@@ -1,0 +1,81 @@
+mysql> create database school;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use school;
+Database changed
+mysql> create table students(id tinyint primary key auto_increment,marks tinyint default 0);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into students(marks) values(100),(80),(95),(12);
+Query OK, 4 rows affected (0.02 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from students;
++----+-------+
+| id | marks |
++----+-------+
+|  1 |   100 |
+|  2 |    80 |
+|  3 |    95 |
+|  4 |    12 |
++----+-------+
+4 rows in set (0.00 sec)
+
+mysql> delete from students;
+Query OK, 4 rows affected (0.01 sec)
+
+mysql> select * from students;
+Empty set (0.00 sec)
+
+mysql> insert into students(marks) values(100),(80),(95),(12);
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from students;
++----+-------+
+| id | marks |
++----+-------+
+|  5 |   100 |
+|  6 |    80 |
+|  7 |    95 |
+|  8 |    12 |
++----+-------+
+4 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from students;
++----+-------+
+| id | marks |
++----+-------+
+|  5 |   100 |
+|  6 |    80 |
+|  7 |    95 |
+|  8 |    12 |
++----+-------+
+4 rows in set (0.00 sec)
+
+mysql> truncate table students;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select * from students;
+Empty set (0.00 sec)
+
+mysql> insert into students(marks) values(100),(80),(95),(12);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from students;
++----+-------+
+| id | marks |
++----+-------+
+|  1 |   100 |
+|  2 |    80 |
+|  3 |    95 |
+|  4 |    12 |
++----+-------+
+4 rows in set (0.00 sec)

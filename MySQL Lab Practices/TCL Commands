@@ -1,0 +1,187 @@
+mysql> use Transactions;
+Database changed
+mysql> select * from account;
++----+---------+
+| id | name    |
++----+---------+
+|  1 | Meenu   |
+|  2 | Pradeep |
+|  3 | Rohan   |
+|  4 | Buvana  |
+|  5 | Chandru |
+|  6 | Anu     |
++----+---------+
+6 rows in set (0.00 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> set autocommit = 0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into account values(7,"Sekaran"),(8,"Iswarya");
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into account values(9,"Keerthana"),(10,"Pavan");
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> commit;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from account;
++----+-----------+
+| id | name      |
++----+-----------+
+|  1 | Meenu     |
+|  2 | Pradeep   |
+|  3 | Rohan     |
+|  4 | Buvana    |
+|  5 | Chandru   |
+|  6 | Anu       |
+|  7 | Sekaran   |
+|  8 | Iswarya   |
+|  9 | Keerthana |
+| 10 | Pavan     |
++----+-----------+
+10 rows in set (0.01 sec)
+
+mysql> insert into account values(11,"Rishi"),(12,"Smile");
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from account;
++----+-----------+
+| id | name      |
++----+-----------+
+|  1 | Meenu     |
+|  2 | Pradeep   |
+|  3 | Rohan     |
+|  4 | Buvana    |
+|  5 | Chandru   |
+|  6 | Anu       |
+|  7 | Sekaran   |
+|  8 | Iswarya   |
+|  9 | Keerthana |
+| 10 | Pavan     |
+| 11 | Rishi     |
+| 12 | Smile     |
++----+-----------+
+12 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from account;
++----+-----------+
+| id | name      |
++----+-----------+
+|  1 | Meenu     |
+|  2 | Pradeep   |
+|  3 | Rohan     |
+|  4 | Buvana    |
+|  5 | Chandru   |
+|  6 | Anu       |
+|  7 | Sekaran   |
+|  8 | Iswarya   |
+|  9 | Keerthana |
+| 10 | Pavan     |
++----+-----------+
+10 rows in set (0.01 sec)
+
+mysql> delete from account;
+Query OK, 10 rows affected (0.00 sec)
+
+mysql> select * from account;
+Empty set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from account;
++----+-----------+
+| id | name      |
++----+-----------+
+|  1 | Meenu     |
+|  2 | Pradeep   |
+|  3 | Rohan     |
+|  4 | Buvana    |
+|  5 | Chandru   |
+|  6 | Anu       |
+|  7 | Sekaran   |
+|  8 | Iswarya   |
+|  9 | Keerthana |
+| 10 | Pavan     |
++----+-----------+
+10 rows in set (0.00 sec)
+
+mysql> truncate table account;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from account;
+Empty set (0.01 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from account;
+Empty set (0.00 sec)
+
+mysql> insert into account values(1,"Meenu"),(2,"Anu");
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> savepoint A;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into account values(3,"Chandru"),(4,"Buvana");
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> savepoint B;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from account;
++----+---------+
+| id | name    |
++----+---------+
+|  1 | Meenu   |
+|  2 | Anu     |
+|  3 | Chandru |
+|  4 | Buvana  |
++----+---------+
+4 rows in set (0.00 sec)
+
+mysql> insert into account values(5,"Pradeep"),(6,"Mukesh");
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from account;
++----+---------+
+| id | name    |
++----+---------+
+|  1 | Meenu   |
+|  2 | Anu     |
+|  3 | Chandru |
+|  4 | Buvana  |
+|  5 | Pradeep |
+|  6 | Mukesh  |
++----+---------+
+6 rows in set (0.01 sec)
+
+mysql> savepoint C;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> rollback to A;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from account;
++----+-------+
+| id | name  |
++----+-------+
+|  1 | Meenu |
+|  2 | Anu   |
++----+-------+
+2 rows in set (0.00 sec)
+
