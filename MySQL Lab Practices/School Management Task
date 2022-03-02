@@ -40,6 +40,17 @@ mysql> select "true" where exists(select * from students where email="msowjanyac
 +------+
 1 row in set (0.00 sec)
 
+or 
+
+mysql> select * from students where email="msowjanyac@gmail.com" and password="Meenu@1234";
++----+-------+----------------------+------------+------------+--------+------------+---------------------+
+| id | name  | email                | mobile_no  | password   | gender | dob        | created_date        |
++----+-------+----------------------+------------+------------+--------+------------+---------------------+
+|  1 | Meenu | msowjanyac@gmail.com | 7448354949 | Meenu@1234 | F      | 2003-09-24 | 2021-10-04 00:00:00 |
++----+-------+----------------------+------------+------------+--------+------------+---------------------+
+1 row in set (0.01 sec)
+
+
 FEATURE 4 : UPDATE PASSWORD
 
 mysql> update students set password="Anuiswarya@1234" where id=2;
