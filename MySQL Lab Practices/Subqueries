@@ -1,0 +1,161 @@
+mysql> select * from suppliers;
++-------------+---------------+--------+------------+
+| supplier_no | supplier_name | status | city       |
++-------------+---------------+--------+------------+
+| S1          | Britannia     |     10 | Delhi      |
+| S2          | New Bakers    |     12 | Bangalore  |
+| S3          | Cookz         |     10 | Delhi      |
+| S4          | Haldiram      |     12 | Tamil Nadu |
+| S5          | Parle         |     30 | Telangana  |
+| S6          | Good Day      |     32 | Tamil Nadu |
+| S7          | Dairy Milk    |     12 | Tamil Nadu |
++-------------+---------------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from items;
++---------+------------+-------+
+| item_no | item_name  | price |
++---------+------------+-------+
+| I1      | Milk       |    30 |
+| I2      | Cake       |    30 |
+| I3      | Bread      |    10 |
+| I4      | Milk Bread |    12 |
+| I5      | Biscuit    |    30 |
++---------+------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from shipments;
++-------------+---------+-------------------+
+| supplier_no | item_no | quantity_supplied |
++-------------+---------+-------------------+
+| S1          | I3      |                30 |
+| S2          | I4      |                30 |
+| S3          | I3      |                10 |
+| S4          | I1      |                12 |
+| S5          | I2      |                30 |
+| S6          | I3      |                12 |
++-------------+---------+-------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from shipments where quantity_supplied > 10;
++-------------+---------+-------------------+
+| supplier_no | item_no | quantity_supplied |
++-------------+---------+-------------------+
+| S1          | I3      |                30 |
+| S2          | I4      |                30 |
+| S4          | I1      |                12 |
+| S5          | I2      |                30 |
+| S6          | I3      |                12 |
++-------------+---------+-------------------+
+5 rows in set (0.00 sec)
+
+mysql> select a.supplier_no from (select * from shipments where quantity_supplied > 10) as a;
++-------------+
+| supplier_no |
++-------------+
+| S1          |
+| S2          |
+| S4          |
+| S5          |
+| S6          |
++-------------+
+5 rows in set (0.00 sec)
+
+mysql> select a.* from (select * from shipments where quantity_supplied > 10) as a;
++-------------+---------+-------------------+
+| supplier_no | item_no | quantity_supplied |
++-------------+---------+-------------------+
+| S1          | I3      |                30 |
+| S2          | I4      |                30 |
+| S4          | I1      |                12 |
+| S5          | I2      |                30 |
+| S6          | I3      |                12 |
++-------------+---------+-------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from shipments where quantity_supplied>(select avg(quantity_supplied) from shipments);
++-------------+---------+-------------------+
+| supplier_no | item_no | quantity_supplied |
++-------------+---------+-------------------+
+| S1          | I3      |                30 |
+| S2          | I4      |                30 |
+| S5          | I2      |                30 |
++-------------+---------+-------------------+
+3 rows in set (0.01 sec)
+mysql> select avg(quantity_supplied) from shipments;
++------------------------+
+| avg(quantity_supplied) |
++------------------------+
+|                20.6667 |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(quantity_supplied) from shipments;
++------------------------+
+| avg(quantity_supplied) |
++------------------------+
+|                20.6667 |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select suppliers.supplier_name,shipments.quantity_supplied from suppliers,shipments;
++---------------+-------------------+
+| supplier_name | quantity_supplied |
++---------------+-------------------+
+| Parle         |                30 |
+| New Bakers    |                30 |
+| Haldiram      |                30 |
+| Good Day      |                30 |
+| Dairy Milk    |                30 |
+| Cookz         |                30 |
+| Britannia     |                30 |
+| Parle         |                30 |
+| New Bakers    |                30 |
+| Haldiram      |                30 |
+| Good Day      |                30 |
+| Dairy Milk    |                30 |
+| Cookz         |                30 |
+| Britannia     |                30 |
+| Parle         |                10 |
+| New Bakers    |                10 |
+| Haldiram      |                10 |
+| Good Day      |                10 |
+| Dairy Milk    |                10 |
+| Cookz         |                10 |
+| Britannia     |                10 |
+| Parle         |                12 |
+| New Bakers    |                12 |
+| Haldiram      |                12 |
+| Good Day      |                12 |
+| Dairy Milk    |                12 |
+| Cookz         |                12 |
+| Britannia     |                12 |
+| Parle         |                30 |
+| New Bakers    |                30 |
+| Haldiram      |                30 |
+| Good Day      |                30 |
+| Dairy Milk    |                30 |
+| Cookz         |                30 |
+| Britannia     |                30 |
+| Parle         |                12 |
+| New Bakers    |                12 |
+| Haldiram      |                12 |
+| Good Day      |                12 |
+| Dairy Milk    |                12 |
+| Cookz         |                12 |
+| Britannia     |                12 |
++---------------+-------------------+
+42 rows in set (0.01 sec)
+
+mysql> select suppliers.supplier_name,shipments.quantity_supplied from suppliers,shipments where suppliers.supplier_no=shipments.supplier_no;
++---------------+-------------------+
+| supplier_name | quantity_supplied |
++---------------+-------------------+
+| Britannia     |                30 |
+| Cookz         |                10 |
+| Good Day      |                12 |
+| Haldiram      |                12 |
+| New Bakers    |                30 |
+| Parle         |                30 |
++---------------+-------------------+
+6 rows in set (0.00 sec)
