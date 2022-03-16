@@ -257,6 +257,6 @@
 
 ## ER Model - FreshTech
 
-<a href="#">![FreshTech - ER Model](https://user-images.githubusercontent.com/93571047/158549143-b1d64d4e-6d4a-4b0b-a981-6ecb9a29c1a9.png)</a>
+<a href="./../MySQL Lab Practices/FreshTech - MySQL Project/FreshTech - ER Model.mwb">![FreshTech - ER Model](https://user-images.githubusercontent.com/93571047/158549143-b1d64d4e-6d4a-4b0b-a981-6ecb9a29c1a9.png)</a>
 
 <hr>
