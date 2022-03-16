@@ -134,7 +134,7 @@
  
  ![describe admins](https://user-images.githubusercontent.com/93571047/158532691-e4ea5e5f-4c59-44c5-9fe3-a475876133b9.png)
  
- ###### Inserton of records into 'admins' table
+ ###### Insertion of records into 'admins' table
  
  ```insert into admins values(1,"F","Technical","1990-10-23"),(2,"F","ELS","1960-01-02"),(3,"F","L&D","1994-03-24"),(4,"M","Admin","1984-01-26");```
  
