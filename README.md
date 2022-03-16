@@ -1,4 +1,3 @@
-<style="background-image:url('(https://images.pexels.com/photos/1461974/pexels-photo-1461974.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)');'</style>
 # &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```FreshTech App```
 
 <hr>
@@ -161,7 +160,100 @@
  
  ###### Fetching the data from 'reports' table 
  
+ ```select * from reports;```
+ 
  ![select * from reports](https://user-images.githubusercontent.com/93571047/158537594-fb90b982-a70f-46b3-b1a5-1e91b8035d01.png)
+ 
+ <hr>
+ 
+ ###### Creation of table 7 - 'subjects'
+ 
+ ```create table subjects(subject_id tinyint primary key,subject_name varchar(20) unique not null);```
+ 
+ <br>
+ 
+ ```desc subjects;```
+ 
+ ![describe subjects](https://user-images.githubusercontent.com/93571047/158540754-3b647a30-1f25-4989-b3bb-91135ff2f641.png)
+ 
+ ###### Insertion of records into 'subjects' table
+ 
+ ```insert into subjects values(1,"ELS"),(2,"Technical"),(3,"L&D");```
+ 
+ ###### Fetching the data from 'subjects' table 
+ 
+ ```select * from subjects;```
+ 
+ ![select * from subjects](https://user-images.githubusercontent.com/93571047/158541315-ce21b568-8dc8-4c0a-ad53-4416e72bf36d.png)
+ 
+ <hr>
+ 
+ ###### Creation of table 8 - 'attendance'
+ 
+ ```create table attendance(date timestamp default current_timestamp,student_id tinyint not null,subject_id tinyint not null,status enum("P","A") default "P",foreign key(student_id) references users(user_id),foreign key(subject_id) references subjects(subject_id));```
+ 
+ <br>
+ 
+ ```desc attendance;```
+ 
+ ![describe attendance](https://user-images.githubusercontent.com/93571047/158542030-9fccbbba-806e-4282-9a96-10b055fe52f3.png)
+ 
+ ###### Insertion of records into 'attendance' table
+ 
+ ```insert into attendance(student_id,subject_id) values(5,1),(5,2),(5,3),(6,1),(6,2),(6,3),(7,1),(7,2),(7,3),(8,1),(8,2),(8,3),(9,1),(9,2),(9,3),(10,1),(10,2),(10,3),(11,1),(11,2),(11,3);```
+ 
+ ###### Fetching the data from 'attendance' table 
+ 
+ ```select * from attendance;```
+ 
+ ![select * from attendance](https://user-images.githubusercontent.com/93571047/158543531-5094c231-258b-441b-b771-afd512ad718e.png)
+ 
+ <hr>
+ 
+ ###### Creation of table 9 - 'assignments'
+ 
+ ```create table assignments(ass_id tinyint primary key auto_increment,subject_Id tinyint not null,ass_name varchar(30) not null,ass_desc varchar(200) default "---------",deadline timestamp not null,foreign key(subject_Id) references subjects(subject_id));```
+ 
+ <br>
+ 
+ ```desc assignments;```
+ 
+ ![describe assignments](https://user-images.githubusercontent.com/93571047/158544199-e57cd699-0477-4c42-bdda-a3df5024bd55.png)
+ 
+ ###### Insertion of data into 'assignments' table
+ 
+ ```insert into assignments(subject_Id,ass_name,deadline) values(2,"Sharding PPT","2022-03-14 10:30:00"),(3,"End user Persona Recoridngs","2022-03-07 10:30:00"),(1,"Calendar Scheduling","2022-03-07 08:30:00");```
+ 
+ ###### Fetching the data from 'assignments' table
+ 
+ ```select * from assignments;```
+ 
+ ![select * from assignments](https://user-images.githubusercontent.com/93571047/158545007-373c770f-4184-4644-bd88-f83dd6cee7ee.png)
+ 
+<hr>
+
+###### Creation of table 10 - 'books'
+
+```create table books(book_id smallint primary key auto_increment,book_name varchar(30) not null,author varchar(30) not null,no_of_views bigint not null check(no_of_views>0),star_ratings tinyint check(star_ratings>=0 and star_ratings<=5));```
+
+<br>
+
+```desc books;```
+
+![describe books](https://user-images.githubusercontent.com/93571047/158545521-4d130583-7c58-4a7b-86e6-2aae20eb0cc0.png)
+
+###### Insertion of records into 'books' table
+
+```insert into books(book_name,author,no_of_views,star_ratings) values("Cindrella","Brothers Grimm",1983989947,5),("Macbeth","William Shakespeare",8138793983,5);```
+
+###### Fetching the data from 'books' table 
+
+```select * from books;```
+
+![select * from books](https://user-images.githubusercontent.com/93571047/158546292-0188ee34-b0e3-4c43-8a46-8a16b06826cc.png)
+
+<hr>
+<hr>
  
  
  
