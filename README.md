@@ -1,3 +1,4 @@
+![Background Image](https://images.pexels.com/photos/1461974/pexels-photo-1461974.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)
 # &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```FreshTech App```
 
 <hr>
@@ -143,3 +144,26 @@
  ![select * from admins](https://user-images.githubusercontent.com/93571047/158533132-4a6fca67-6565-4a3e-9bad-0788df063ce2.png)
  
  <hr>
+ 
+ ###### Creation of table 6 - 'reports'
+ 
+ ``` create table reports(studentId tinyint not null,month enum('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec') not null,`Self-learning` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null, `Helping peers` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null,`Interactive in Class` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null,`Takes leadership` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null,`Completes assignment on time` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null);``` 
+ 
+ <br>
+ 
+ ```desc reports;```
+ 
+ ![describe reports](https://user-images.githubusercontent.com/93571047/158536903-b9d29aeb-7f05-4cf2-ab0d-631eb20503ff.png)
+ 
+ ##### Insertion of records into 'reports' table 
+ 
+ ```insert into reports values(5,"Jan","Excellent","Role Model","Good","Role Model","Yet To Start"),(6,"Jan","Excellent","Role Model","Good","Role Model","Yet To Start"),(7,"Jan","Excellent","Role Model","Good","Role Model","Yet To Start"),(8,"Jan","Role Model","Role Model","Role Model","Role Model","Role Model")(9,"Jan","Excellent","Role Model","Good","Role Model","Yet To Start"),(10,"Jan","Excellent","Role Model","Good","Role Model","Yet To Start"),(11,"Jan","Excellent","Role Model","Good","Role Model","Yet To Start");```
+ 
+ ###### Fetching the data from 'reports' table 
+ 
+ ![select * from reports](https://user-images.githubusercontent.com/93571047/158537594-fb90b982-a70f-46b3-b1a5-1e91b8035d01.png)
+ 
+ 
+ 
+ 
+ 
