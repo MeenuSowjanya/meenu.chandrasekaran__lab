@@ -280,6 +280,6 @@
 
 ## ER Model - FreshTech
 
-<a href="FreshTech - ERR Model">![FreshTech - ERR Model](https://user-images.githubusercontent.com/93571047/158758823-57fec89a-e367-4c9f-8fce-c464bdc96612.png)</a>
+<a href="FreshTech - ERR Model.mwb">![FreshTech - ERR Model](https://user-images.githubusercontent.com/93571047/158758823-57fec89a-e367-4c9f-8fce-c464bdc96612.png)</a>
 
 <hr>
