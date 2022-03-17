@@ -253,6 +253,29 @@
 ![select * from books](https://user-images.githubusercontent.com/93571047/158546292-0188ee34-b0e3-4c43-8a46-8a16b06826cc.png)
 
 <hr>
+
+###### Creation of table 11 - 'notifications' 
+
+```create table notifications(popup_id tinyint primary key auto_increment,subject_Id tinyint,foreign key(subject_Id) references subjects(subject_id),description varchar(200) not null);```
+
+<br>
+
+```desc notifications;```
+
+![describe notifications](https://user-images.githubusercontent.com/93571047/158758079-0fb2d2d2-e7d7-4811-8dba-0b40565a7314.png)
+
+###### Insertion of records into 'notifications' table 
+
+```insert into notifications(subject_Id,description) values(2,"Complete ER Model for your project and submit tomorrow"),(1,"Attend the class tomorrow without fail. There will be an assessment tomorrow.");```
+
+###### Fetching the data from 'notifications' table 
+
+```select * from notifications;```
+
+![select * from notifications](https://user-images.githubusercontent.com/93571047/158758086-8bcd7a45-f198-437e-8f62-791f7213b110.png)
+
+
+<hr>
 <hr>
 
 ## ER Model - FreshTech
