@@ -313,4 +313,8 @@
 
 ###### Viewing created views in the database - 'FreshTech'
 
-```
+```show full tables where table_type = 'view';```
+
+![views](https://user-images.githubusercontent.com/93571047/158958792-0ee11a04-c3bb-46ba-a3fe-64c8f2d1ce58.png)
+
+<hr>
