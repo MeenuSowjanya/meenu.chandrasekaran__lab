@@ -255,9 +255,9 @@
 <hr>
 <hr>
 
-## ERR Model - FreshTech
+## EER Model - FreshTech
 
-<a href="FreshTech - ERR Model.mwb">![FreshTech - ER Model](https://user-images.githubusercontent.com/93571047/158549143-b1d64d4e-6d4a-4b0b-a981-6ecb9a29c1a9.png)</a>
+<a href="FreshTech - EER Model.mwb">![FreshTech - ER Model](https://user-images.githubusercontent.com/93571047/158549143-b1d64d4e-6d4a-4b0b-a981-6ecb9a29c1a9.png)</a>
 
 <hr>
 
@@ -300,3 +300,39 @@
  <a href="Indexes list in FreshTech.csv">![indexes](https://user-images.githubusercontent.com/93571047/158944519-001c7163-cc16-401a-a498-ed8318116710.png)</a>
  
  <hr>
+ 
+ ###### Creation of views for easy access on certain columns from multiple tables
+ 
+ ```create view `outstanding students` as select users.user_name from users,reports where users.user_id=reports.student_id and concat(`Self-learning`,`Helping peers`,`Interactive in Class`,`Takes leadership`,`Completes assignment on time`)="Role ModelRole ModelRole ModelRole ModelRole Model";```
+ 
+ <br>
+ 
+ ```desc `outstanding students`;```
+ 
+![describe view](https://user-images.githubusercontent.com/93571047/158947332-26999473-bacd-4a7c-ac7a-50a14eea313b.png)
+
+###### Viewing created views in the database - 'FreshTech'
+
+```show full tables where table_type = 'view';```
+
+![views](https://user-images.githubusercontent.com/93571047/158958792-0ee11a04-c3bb-46ba-a3fe-64c8f2d1ce58.png)
+
+###### Fetching the data from `outstanding students` view
+
+```select * from `outstanding students`;```
+
+![select * from view](https://user-images.githubusercontent.com/93571047/158963091-d2779ed2-776d-4e21-b7c7-35be9e32b7bd.png)
+
+<hr>
+
+###### Checking whether the user has signed in giving correct credentials 
+
+```select true from users where user_mailId="chitram@gmail.com" and user_password="Chitra@1234";```
+
+![image](https://user-images.githubusercontent.com/93571047/158966375-e715cdcf-3f8f-4261-a598-d839abf69f4e.png)
+
+```select true from users where user_mailId="chitram@gmail.com" and user_password="Chitr@1234";```
+
+![image](https://user-images.githubusercontent.com/93571047/158966848-5fc0d22e-5caf-47f4-8375-4c82de426bf1.png)
+
+<hr>
