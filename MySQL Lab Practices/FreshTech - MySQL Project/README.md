@@ -318,3 +318,11 @@
 ![views](https://user-images.githubusercontent.com/93571047/158958792-0ee11a04-c3bb-46ba-a3fe-64c8f2d1ce58.png)
 
 <hr>
+
+###### Fetching the data from `outstanding students` view
+
+```select * from `outstanding students`;```
+
+![select * from view](https://user-images.githubusercontent.com/93571047/158963091-d2779ed2-776d-4e21-b7c7-35be9e32b7bd.png)
+
+<hr>
