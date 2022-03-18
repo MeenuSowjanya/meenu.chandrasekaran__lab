@@ -317,8 +317,6 @@
 
 ![views](https://user-images.githubusercontent.com/93571047/158958792-0ee11a04-c3bb-46ba-a3fe-64c8f2d1ce58.png)
 
-<hr>
-
 ###### Fetching the data from `outstanding students` view
 
 ```select * from `outstanding students`;```
@@ -336,3 +334,5 @@
 ```select true from users where user_mailId="chitram@gmail.com" and user_password="Chitr@1234";```
 
 ![image](https://user-images.githubusercontent.com/93571047/158966848-5fc0d22e-5caf-47f4-8375-4c82de426bf1.png)
+
+<hr>
