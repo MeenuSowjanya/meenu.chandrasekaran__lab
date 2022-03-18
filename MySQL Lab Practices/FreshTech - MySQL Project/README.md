@@ -300,3 +300,17 @@
  <a href="Indexes list in FreshTech.csv">![indexes](https://user-images.githubusercontent.com/93571047/158944519-001c7163-cc16-401a-a498-ed8318116710.png)</a>
  
  <hr>
+ 
+ ###### Creation of views for easy access on certain columns from multiple tables
+ 
+ ```create view `outstanding students` as select users.user_name from users,reports where users.user_id=reports.student_id and concat(`Self-learning`,`Helping peers`,`Interactive in Class`,`Takes leadership`,`Completes assignment on time`)="Role ModelRole ModelRole ModelRole ModelRole Model";```
+ 
+ <br>
+ 
+ ```desc `outstanding students`;```
+ 
+![describe view](https://user-images.githubusercontent.com/93571047/158947332-26999473-bacd-4a7c-ac7a-50a14eea313b.png)
+
+###### Viewing created views in the database - 'FreshTech'
+
+```
