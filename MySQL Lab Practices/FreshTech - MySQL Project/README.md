@@ -255,7 +255,7 @@
 <hr>
 <hr>
 
-## ERR Model - FreshTech
+## EER Model - FreshTech
 
 <a href="FreshTech - ERR Model.mwb">![FreshTech - ER Model](https://user-images.githubusercontent.com/93571047/158549143-b1d64d4e-6d4a-4b0b-a981-6ecb9a29c1a9.png)</a>
 
