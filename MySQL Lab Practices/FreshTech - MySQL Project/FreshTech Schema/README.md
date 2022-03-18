@@ -1,13 +1,11 @@
 # &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```FreshTech App```
 
-<br><br>
-
 <br>
 
 
 ![Screenshot from 2022-03-18 14-38-13](https://user-images.githubusercontent.com/93571047/158973952-93892cec-04c2-42d8-93be-03795a819509.png)
 
-<br>
+
 
 
 ![Screenshot from 2022-03-18 14-44-49](https://user-images.githubusercontent.com/93571047/158974730-e76580b0-ac30-43cf-8f98-a2bca83d29b0.png)
