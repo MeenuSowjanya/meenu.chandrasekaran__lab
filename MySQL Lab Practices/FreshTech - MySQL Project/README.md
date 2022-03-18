@@ -264,3 +264,39 @@
 ## ER Model
 
 ![Untitled presentation (3)](https://user-images.githubusercontent.com/93571047/158826910-e7b566f3-d8b2-4923-b034-7247e1bf99a2.png)
+
+<hr>
+
+<hr>
+
+###### Creation of indexes for easy retreival of data
+
+```create unique index user_mail on users(user_mailId);```
+
+<br>
+
+```create unique index s_id on students(student_id);```
+
+<br>
+
+```create unique index a_id on admins(admin_id);```
+
+<br>
+
+```create unique index stu_id on reports(student_id);```
+
+<br>
+
+```create unique index sub_id on subjects(subject_id);```
+
+###### Viewing indexes in the database - 'FreshTech'
+
+```use information_schema;```
+
+ <br>
+ 
+ ```select * from statistics where TABLE_SCHEMA="FreshTech";```
+ 
+ <a href="Indexes list in FreshTech.csv">![indexes](https://user-images.githubusercontent.com/93571047/158944519-001c7163-cc16-401a-a498-ed8318116710.png)</a>
+ 
+ <hr>
