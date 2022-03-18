@@ -326,3 +326,13 @@
 ![select * from view](https://user-images.githubusercontent.com/93571047/158963091-d2779ed2-776d-4e21-b7c7-35be9e32b7bd.png)
 
 <hr>
+
+###### Checking whether the user has signed in giving correct credentials 
+
+```select true from users where user_mailId="chitram@gmail.com" and user_password="Chitra@1234";```
+
+![image](https://user-images.githubusercontent.com/93571047/158966375-e715cdcf-3f8f-4261-a598-d839abf69f4e.png)
+
+```select true from users where user_mailId="chitram@gmail.com" and user_password="Chitr@1234";```
+
+![image](https://user-images.githubusercontent.com/93571047/158966848-5fc0d22e-5caf-47f4-8375-4c82de426bf1.png)
