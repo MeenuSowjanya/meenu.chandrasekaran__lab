@@ -348,21 +348,65 @@
  
 ![image](https://user-images.githubusercontent.com/93571047/159118886-e37ff087-f13e-4436-b756-3ce6d7a07027.png)
 
-###### Insertion of records into 'queries' table
+###### Insertion of records into 'query_replies' table
  
  ```insert into query_replies(query_id,admin_id,description) values(1,3,"Hello.Just keep on following our notifications page to know further moves"),(1,4,"Hello.No need to worry about the past days.Just follow popups page for further informations.");```
  
- ###### Fetching the data from 'queries' table 
+ ###### Fetching the data from 'query_replies' table 
  
  ```select * from query_replies;```
  
  ![image](https://user-images.githubusercontent.com/93571047/159118943-8cea1772-ac91-4a05-8611-3219889bafaa.png)
  
  <hr>
+ 
+ ###### Creation of table 14 - 'query_reactions'
+ 
+ ```create table query_reactions(query_Id tinyint not null,foreign key(query_Id) references queries(query_id),User_Id tinyint not null,foreign key(User_Id) references users(user_id),reaction enum("like","dislike"));```
+ 
+ <br>
+ 
+ ```desc query_reactions;```
+ 
+![image](https://user-images.githubusercontent.com/93571047/159121725-2c259ae8-16ab-41d5-b344-fa6da3de4547.png)
+
+###### Insertion of records into 'query_reactions' table
+ 
+ ```insert into query_reactions values(2,6,"like"),(2,1,"like"),(2,8,"like");```
+ 
+ ###### Fetching the data from 'query_reactions' table 
+ 
+ ```select * from query_reactions;```
+ 
+ ![image](https://user-images.githubusercontent.com/93571047/159121646-1e4d0da1-38b1-45b4-9f45-50237eb3338e.png)
+ 
+ <hr>
+ 
+ ###### Creation of table 15 - 'feedbacks'
+ 
+ ```create table feedbacks(f_id tinyint primary key auto_increment,user_ID tinyint,foreign key(user_ID) references users(user_id),description varchar(500));```
+ 
+ <br>
+ 
+ ```desc feedbacks;```
+ 
+![image](https://user-images.githubusercontent.com/93571047/159121854-16b485f0-3619-4758-bed2-3e6c30b151dc.png)
+
+###### Insertion of records into 'feedbacks' table
+ 
+ ```insert into feedbacks(user_ID,description) values(11,"Very satisfactory"),(NULL,"Can include some more features for unregistred people");```
+ 
+ ###### Fetching the data from 'feedbacks' table 
+ 
+ ```select * from feedbacks;```
+ 
+ ![image](https://user-images.githubusercontent.com/93571047/159121906-a603f4b1-738a-49f7-aeec-72c5e7d123e1.png)
+ 
+ <hr>
 
 ## EER Model - FreshTech
 
-<a href="./FreshTech Schema/FreshTech - EER Model.mwb">![FreshTech - ER Model](https://user-images.githubusercontent.com/93571047/158549143-b1d64d4e-6d4a-4b0b-a981-6ecb9a29c1a9.png)</a>
+<a href="./FreshTech Schema/FreshTech - EER Model.mwb![EER Model](https://user-images.githubusercontent.com/93571047/159122049-02be6379-76fc-45d2-8ec2-97cc434f8870.png)</a>
 
 <hr>
 
