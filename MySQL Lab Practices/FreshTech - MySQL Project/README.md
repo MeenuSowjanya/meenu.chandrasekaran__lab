@@ -293,6 +293,29 @@
 ![image](https://user-images.githubusercontent.com/93571047/159117692-fb748ac1-a920-454a-abd4-c76f3093a951.png)
 
 <hr>
+
+###### Creation of table 11 - 'notifications'
+ 
+ ```create table notifications(not_id tinyint primary key auto_increment,admin_id tinyint not null,foreign key(admin_id) references admins(admin_id),description varchar(100) not null,time timestamp default current_timestamp);```
+ 
+ <br>
+ 
+ ```desc notifications;```
+ 
+ ![image](https://user-images.githubusercontent.com/93571047/159117996-b4243a5e-0efb-49d0-8086-887ab5ac6de0.png)
+ 
+ ###### Insertion of records into 'notifications' table
+ 
+ ```insert into notifications(admin_id,description) values(4,"From tomorrow , the project build week starts. So everybody be present on tomorrow"),(3,"Tomorrow L&D class Agenda will be based on Stocks and Mutual Funds");```
+ 
+ ###### Fetching the data from 'notifications' table 
+ 
+ ```select * from notifications;```
+ 
+ ![image](https://user-images.githubusercontent.com/93571047/159118054-ba53f24b-87ee-470a-8be5-b61bbf36b6f5.png)
+
+<hr>
+
 <hr>
 
 ## EER Model - FreshTech
