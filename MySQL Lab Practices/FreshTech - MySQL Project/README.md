@@ -406,7 +406,7 @@
 
 ## EER Model - FreshTech
 
-<a href="./FreshTech Schema/FreshTech - EER Model.mwb![EER Model](https://user-images.githubusercontent.com/93571047/159122049-02be6379-76fc-45d2-8ec2-97cc434f8870.png)</a>
+<a href="./FreshTech Schema/FreshTech - EER Model.mwb">![EER Model](https://user-images.githubusercontent.com/93571047/159122049-02be6379-76fc-45d2-8ec2-97cc434f8870.png)</a>
 
 <hr>
 
