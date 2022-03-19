@@ -153,7 +153,7 @@ mysql> select * from admins;
 +----------+--------+----------------+------------+
 4 rows in set (0.00 sec)
 
-mysql> create table reports(studentId tinyint not null,month enum('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec') not null,`Self-learning` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null, `Helping peers` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null,`Interactive in Class` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null,`Takes leadership` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null,`Completes assignment on time` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null);```
+mysql> create table reports(student_Id tinyint not null,month enum('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec') not null,`Self-learning` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null, `Helping peers` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null,`Interactive in Class` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null,`Takes leadership` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null,`Completes assignment on time` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null, foreign key(student_Id) references users(user_id));```
 mysql> desc reports;
 +------------------------------+-------------------------------------------------------------------------------+------+-----+---------+-------+
 | Field                        | Type                                                                          | Null | Key | Default | Extra |
@@ -167,6 +167,38 @@ mysql> desc reports;
 | Completes assignment on time | enum('Yet To Start','Good','Very Good','Excellent','Role Model')              | NO   |     | NULL    |       |
 +------------------------------+-------------------------------------------------------------------------------+------+-----+---------+-------+
 7 rows in set (0.00 sec)
+
+mysql> select CONSTRAINT_NAME from INFORMATION_SCHEMA.TABLE_CONSTRAINTS where TABLE_NAME = 'reports';
++-----------------+
+| CONSTRAINT_NAME |
++-----------------+
+| stu_id          |
+| reports_ibfk_1  |
++-----------------+
+2 rows in set (0.01 sec)
+
+mysql> alter table reports drop constraint reports_ibfk_1;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc reports;
++------------------------------+-------------------------------------------------------------------------------+------+-----+---------+-------+
+| Field                        | Type                                                                          | Null | Key | Default | Extra |
++------------------------------+-------------------------------------------------------------------------------+------+-----+---------+-------+
+| student_Id                   | tinyint                                                                       | NO   | PRI | NULL    |       |
+| month                        | enum('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec') | NO   |     | NULL    |       |
+| Self-learning                | enum('Yet To Start','Good','Very Good','Excellent','Role Model')              | NO   |     | NULL    |       |
+| Helping peers                | enum('Yet To Start','Good','Very Good','Excellent','Role Model')              | NO   |     | NULL    |       |
+| Interactive in Class         | enum('Yet To Start','Good','Very Good','Excellent','Role Model')              | NO   |     | NULL    |       |
+| Takes leadership             | enum('Yet To Start','Good','Very Good','Excellent','Role Model')              | NO   |     | NULL    |       |
+| Completes assignment on time | enum('Yet To Start','Good','Very Good','Excellent','Role Model')              | NO   |     | NULL    |       |
++------------------------------+-------------------------------------------------------------------------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> alter table reports add foreign key(student_Id) references students(student_id);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
 
 mysql> insert into reports values(5,"Jan","Excellent","Role Model","Good","Role Model","Yet To Start");
 Query OK, 1 row affected (0.01 sec)
@@ -243,9 +275,38 @@ mysql> desc attendance;
 +------------+---------------+------+-----+-------------------+-------------------+
 4 rows in set (0.00 sec)
 
+mysql> select CONSTRAINT_NAME from INFORMATION_SCHEMA.TABLE_CONSTRAINTS where TABLE_NAME = 'attendance';
++-------------------+
+| CONSTRAINT_NAME   |
++-------------------+
+| attendance_ibfk_1 |
+| attendance_ibfk_2 |
++-------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc attendance;
++------------+---------------+------+-----+-------------------+-------------------+
+| Field      | Type          | Null | Key | Default           | Extra             |
++------------+---------------+------+-----+-------------------+-------------------+
+| date       | timestamp     | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| student_id | tinyint       | NO   | MUL | NULL              |                   |
+| subject_id | tinyint       | NO   | MUL | NULL              |                   |
+| status     | enum('P','A') | YES  |     | P                 |                   |
++------------+---------------+------+-----+-------------------+-------------------+
+4 rows in set (0.01 sec)
+
+mysql> alter table attendance drop constraint attendance_ibfk_1;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table attendance add foreign key(student_id) references students(student_id);
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
 mysql> insert into attendance(student_id,subject_id) values(5,1),(5,2),(5,3),(6,1),(6,2),(6,3),(7,1),(7,2),(7,3),(8,1),(8,2),(8,3),(9,1),(9,2),(9,3),(10,1),(10,2),(10,3),(11,1),(11,2),(11,3);
 Query OK, 21 rows affected (0.02 sec)
 Records: 21  Duplicates: 0  Warnings: 0
+
 
 mysql> select * from attendance;
 +---------------------+------------+------------+--------+
@@ -303,6 +364,18 @@ mysql> select * from books;
 +---------+-----------+---------------------+-------------+--------------+
 2 rows in set (0.00 sec)
 
+mysql>alter table books add column subject_id tinyint after book_id;
+Query OK, 2 rows affected, 1 warning (0.05 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+mysql>alter table books add foreign key(subject_id) references subjects(subject_id);
+Query OK, 2 rows affected, 1 warning (0.05 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+mysql>update books set subject_id=1 where book_id in (1,2);
+Query OK, 2 rows affected, 0 warning (0.05 sec)
+Rows Matched: 2  Changed: 2  Warnings: 0
+
 mysql> create table assignments(ass_id tinyint primary key auto_increment,subject_Id tinyint not null,ass_name varchar(30) not null,ass_desc varchar(200) default "---------",deadline timestamp not null,foreign key(subject_Id) references subjects(subject_id));
 Query OK, 0 rows affected (0.04 sec)
 
@@ -336,6 +409,141 @@ mysql> select * from assignments;
 |      3 |          1 | Calendar Scheduling         | --------- | 2022-03-07 08:30:00 |
 +--------+------------+-----------------------------+-----------+---------------------+
 3 rows in set (0.00 sec)
+
+mysql> create table notifications(not_id tinyint primary key auto_increment,admin_id tinyint not null,foreign key(admin_id) references admins(admin_id),description varchar(100) not null,time timestamp default current_timestamp);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc notifications;
++-------------+--------------+------+-----+-------------------+-------------------+
+| Field       | Type         | Null | Key | Default           | Extra             |
++-------------+--------------+------+-----+-------------------+-------------------+
+| not_id      | tinyint      | NO   | PRI | NULL              | auto_increment    |
+| admin_id    | tinyint      | NO   | MUL | NULL              |                   |
+| description | varchar(100) | NO   |     | NULL              |                   |
+| time        | timestamp    | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++-------------+--------------+------+-----+-------------------+-------------------+
+4 rows in set (0.01 sec)
+
+mysql> insert into notifications(admin_id,description) values(4,"From tomorrow , the project build week starts. So everybody be present on tomorrow"),(3,"Tomorrow L&D class Agenda will be based on Stocks and Mutual Funds");
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from notifications;
++--------+----------+------------------------------------------------------------------------------------+---------------------+
+| not_id | admin_id | description                                                                        | time                |
++--------+----------+------------------------------------------------------------------------------------+---------------------+
+|      1 |        4 | From tomorrow , the project build week starts. So everybody be present on tomorrow | 2022-03-19 16:14:59 |
+|      2 |        3 | Tomorrow L&D class Agenda will be based on Stocks and Mutual Funds                 | 2022-03-19 16:14:59 |
++--------+----------+------------------------------------------------------------------------------------+---------------------+
+2 rows in set (0.00 sec)
+
+mysql> create table queries(query_id tinyint primary key auto_increment,stu_id tinyint not null,foreign key(stu_id) references students(student_id),description varchar(100) not null,time timestamp default current_timestamp);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc queries;
++-------------+--------------+------+-----+-------------------+-------------------+
+| Field       | Type         | Null | Key | Default           | Extra             |
++-------------+--------------+------+-----+-------------------+-------------------+
+| query_id    | tinyint      | NO   | PRI | NULL              | auto_increment    |
+| stu_id      | tinyint      | NO   | MUL | NULL              |                   |
+| description | varchar(100) | NO   |     | NULL              |                   |
+| time        | timestamp    | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++-------------+--------------+------+-----+-------------------+-------------------+
+4 rows in set (0.01 sec)
+
+mysql> insert into queries(stu_id,description) values(8,"Hi coaches.How can I cope up with other peers?"),(10,"Hello @Shyam sir. When will the code review starts for this project build week?");
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from queries;
++----------+--------+---------------------------------------------------------------------------------+---------------------+
+| query_id | stu_id | description                                                                     | time                |
++----------+--------+---------------------------------------------------------------------------------+---------------------+
+|        1 |      8 | Hi coaches.How can I cope up with other peers?                                  | 2022-03-19 16:29:56 |
+|        2 |     10 | Hello @Shyam sir. When will the code review starts for this project build week? | 2022-03-19 16:29:56 |
++----------+--------+---------------------------------------------------------------------------------+---------------------+
+2 rows in set (0.00 sec)
+
+mysql> create table query_replies(reply_id tinyint primary key auto_increment,query_id tinyint not null,foreign key(query_id) references queries(query_id),admin_id tinyint not null,foreign key(admin_id) references admins(admin_id),description varchar(100) not null);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> desc query_replies;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| reply_id    | tinyint      | NO   | PRI | NULL    | auto_increment |
+| query_id    | tinyint      | NO   | MUL | NULL    |                |
+| admin_id    | tinyint      | NO   | MUL | NULL    |                |
+| description | varchar(100) | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> insert into query_replies(query_id,admin_id,description) values(1,3,"Hello.Just keep on following our notifications page to know further moves"),(1,4,"Hello.No need to worry about the past days.Just follow popups page for further informations.");
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from query_replies;
++----------+----------+----------+----------------------------------------------------------------------------------------------+
+| reply_id | query_id | admin_id | description                                                                                  |
++----------+----------+----------+----------------------------------------------------------------------------------------------+
+|        3 |        1 |        3 | Hello.Just keep on following our notifications page to know further moves                    |
+|        4 |        1 |        4 | Hello.No need to worry about the past days.Just follow popups page for further informations. |
++----------+----------+----------+----------------------------------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> create table query_reactions(query_Id tinyint not null,foreign key(query_Id) references queries(query_id),User_Id tinyint not null,foreign key(User_Id) references users(user_id),reaction enum("like","dislike"));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc query_reactions;
++----------+------------------------+------+-----+---------+-------+
+| Field    | Type                   | Null | Key | Default | Extra |
++----------+------------------------+------+-----+---------+-------+
+| query_Id | tinyint                | NO   | MUL | NULL    |       |
+| User_Id  | tinyint                | NO   | MUL | NULL    |       |
+| reaction | enum('like','dislike') | YES  |     | NULL    |       |
++----------+------------------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into query_reactions values(2,6,"like"),(2,1,"like"),(2,8,"like");
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from query_reactions;
++----------+---------+----------+
+| query_Id | User_Id | reaction |
++----------+---------+----------+
+|        2 |       6 | like     |
+|        2 |       1 | like     |
+|        2 |       8 | like     |
++----------+---------+----------+
+3 rows in set (0.01 sec)
+
+mysql> create table feedbacks(f_id tinyint primary key auto_increment,user_ID tinyint,foreign key(user_ID) references users(user_id),description varchar(500));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc feedbacks;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| f_id        | tinyint      | NO   | PRI | NULL    | auto_increment |
+| user_ID     | tinyint      | YES  | MUL | NULL    |                |
+| description | varchar(500) | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into feedbacks(user_ID,description) values(11,"Very satisfactory"),(NULL,"Can include some more features for unregistred people");
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from feedbacks;
++------+---------+-------------------------------------------------------+
+| f_id | user_ID | description                                           |
++------+---------+-------------------------------------------------------+
+|    3 |      11 | Very satisfactory                                     |
+|    4 |    NULL | Can include some more features for unregistred people |
++------+---------+-------------------------------------------------------+
+2 rows in set (0.00 sec)
+
 
 mysql> create unique index user_mail on users(user_mailId);
 Query OK, 0 rows affected, 1 warning (0.06 sec)
