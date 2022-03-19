@@ -154,6 +154,22 @@
  
  ![describe reports](https://user-images.githubusercontent.com/93571047/158536903-b9d29aeb-7f05-4cf2-ab0d-631eb20503ff.png)
  
+ <br>
+ 
+ ```use INFORMATION_SCHEMA;```
+ 
+ <br>
+ 
+ ```select CONSTRAINT_NAME from INFORMATION_SCHEMA.TABLE_CONSTRAINTS where TABLE_NAME = 'reports';```
+ 
+ ![image](https://user-images.githubusercontent.com/93571047/159115704-1946c65e-c926-46e5-9ea1-4cd582c11934.png)
+
+```alter table reports drop constraint reports_ibfk_1;```
+
+<br>
+
+```alter table reports add foreign key(student_Id) references students(student_id);```
+ 
  ##### Insertion of records into 'reports' table 
  
  ```insert into reports values(5,"Jan","Excellent","Role Model","Good","Role Model","Yet To Start"),(6,"Jan","Excellent","Role Model","Good","Role Model","Yet To Start"),(7,"Jan","Excellent","Role Model","Good","Role Model","Yet To Start"),(8,"Jan","Role Model","Role Model","Role Model","Role Model","Role Model")(9,"Jan","Excellent","Role Model","Good","Role Model","Yet To Start"),(10,"Jan","Excellent","Role Model","Good","Role Model","Yet To Start"),(11,"Jan","Excellent","Role Model","Good","Role Model","Yet To Start");```
@@ -197,6 +213,12 @@
  ```desc attendance;```
  
  ![describe attendance](https://user-images.githubusercontent.com/93571047/158542030-9fccbbba-806e-4282-9a96-10b055fe52f3.png)
+ 
+ ```alter table attendance drop constraint attendance_ibfk_1;```
+ 
+ <br>
+ 
+ ```alter table attendance add foreign key(student_id) references students(student_id);```
  
  ###### Insertion of records into 'attendance' table
  
