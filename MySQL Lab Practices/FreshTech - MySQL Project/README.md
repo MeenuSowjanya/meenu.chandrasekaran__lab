@@ -274,6 +274,24 @@
 
 ![select * from books](https://user-images.githubusercontent.com/93571047/158546292-0188ee34-b0e3-4c43-8a46-8a16b06826cc.png)
 
+###### Adding a foreign key column to books table
+
+```alter table books add column subject_id tinyint after book_id;```
+
+<br>
+
+```alter table books add foreign key(subject_id) references subjects(subject_id);```
+
+###### Updating values in 'subject_id' column
+
+```update books set subject_id=1 where book_id in (1,2);```
+
+###### Fetching the data from 'books' table 
+
+```select * from books;```
+
+![image](https://user-images.githubusercontent.com/93571047/159117692-fb748ac1-a920-454a-abd4-c76f3093a951.png)
+
 <hr>
 <hr>
 
