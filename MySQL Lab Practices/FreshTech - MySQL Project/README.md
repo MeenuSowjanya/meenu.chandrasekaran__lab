@@ -316,7 +316,27 @@
 
 <hr>
 
-<hr>
+###### Creation of table 12 - 'queries'
+ 
+ ```create table queries(query_id tinyint primary key auto_increment,stu_id tinyint not null,foreign key(stu_id) references students(student_id),description varchar(100) not null,time timestamp default current_timestamp);```
+ 
+ <br>
+ 
+ ```desc queries;```
+ 
+![image](https://user-images.githubusercontent.com/93571047/159118396-94bbf44b-c835-4436-a029-48176a218a7e.png)
+
+  ###### Insertion of records into 'queries' table
+ 
+ ```insert into queries(stu_id,description) values(8,"Hi coaches.How can I cope up with other peers?"),(10,"Hello @Shyam sir. When will the code review starts for this project build week?");```
+ 
+ ###### Fetching the data from 'queries' table 
+ 
+ ```select * from queries;```
+ 
+ ![image](https://user-images.githubusercontent.com/93571047/159118463-19fd2b2c-081a-40ce-b0fd-23ad4345bedb.png)
+ 
+ <hr>
 
 ## EER Model - FreshTech
 
