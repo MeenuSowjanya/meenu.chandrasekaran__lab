@@ -507,7 +507,8 @@ insert into queries(stu_id,description) values(8,"Hi coaches.How can I cope up w
  ###### Creation of table 14 - 'query_reactions'
  
  ```
- create table query_reactions(query_Id tinyint not null,foreign key(query_Id) references queries(query_id),User_Id tinyint not null,foreign key(User_Id) references users(user_id),reaction enum("like","dislike"));```
+ create table query_reactions(query_Id tinyint not null,foreign key(query_Id) references queries(query_id),User_Id tinyint not null,foreign key(User_Id) references users(user_id),reaction enum("like","dislike"));
+ ```
  
  <br>
  
@@ -539,7 +540,7 @@ insert into queries(stu_id,description) values(8,"Hi coaches.How can I cope up w
 create table feedbacks(f_id tinyint primary key auto_increment,user_ID tinyint,foreign key(user_ID) references users(user_id),description varchar(500));
 ```
  
- 
+<br> 
  
  ```
  desc feedbacks;
@@ -585,25 +586,25 @@ create table feedbacks(f_id tinyint primary key auto_increment,user_ID tinyint,f
 create unique index user_mail on users(user_mailId);
 ```
 
-
+<br>
 
 ```
 create unique index s_id on students(student_id);
 ```
 
-
+<br>
 
 ```
 create unique index a_id on admins(admin_id);
 ```
 
-
+<br>
 
 ```
 create unique index stu_id on reports(student_id);
 ```
 
-
+<br>
 
 ```
 create unique index sub_id on subjects(subject_id);
@@ -615,6 +616,7 @@ create unique index sub_id on subjects(subject_id);
 use information_schema;
 ```
 
+<br>
 
  
  ```
@@ -631,7 +633,7 @@ use information_schema;
  create view `outstanding students` as select users.user_name from users,reports where users.user_id=reports.student_id and concat(`Self-learning`,`Helping peers`,`Interactive in Class`,`Takes leadership`,`Completes assignment on time`)="Role ModelRole ModelRole ModelRole ModelRole Model";
  ```
  
- 
+ <br>
  
  ```
  desc `outstanding students`;
