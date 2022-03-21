@@ -482,17 +482,23 @@ insert into queries(stu_id,description) values(8,"Hi coaches.How can I cope up w
  
  ###### Creation of table 13 - 'query_replies'
  
- ```create table query_replies(reply_id tinyint primary key auto_increment,query_id tinyint not null,foreign key(query_id) references queries(query_id),admin_id tinyint not null,foreign key(admin_id) references admins(admin_id),description varchar(100) not null);```
+ ```
+create table query_replies(reply_id tinyint primary key auto_increment,query_id tinyint not null,foreign key(query_id) references queries(query_id),admin_id tinyint not null,foreign key(admin_id) references admins(admin_id),description varchar(100) not null);
+```
  
  <br>
  
- ```desc query_replies;```
+ ```
+ desc query_replies;
+ ```
  
 ![image](https://user-images.githubusercontent.com/93571047/159118886-e37ff087-f13e-4436-b756-3ce6d7a07027.png)
 
 ###### Insertion of records into 'query_replies' table
  
- ```insert into query_replies(query_id,admin_id,description) values(1,3,"Hello.Just keep on following our notifications page to know further moves"),(1,4,"Hello.No need to worry about the past days.Just follow popups page for further informations.");```
+ ```
+insert into query_replies(query_id,admin_id,description) values(1,3,"Hello.Just keep on following our notifications page to know further moves"),(1,4,"Hello.No need to worry about the past days.Just follow popups page for further informations.");
+```
  
  ###### Fetching the data from 'query_replies' table 
  
