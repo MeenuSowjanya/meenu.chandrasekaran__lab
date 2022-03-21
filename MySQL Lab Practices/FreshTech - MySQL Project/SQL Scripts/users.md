@@ -1,5 +1,7 @@
 <hr>
+
 # 'users' table
+
 <br>
 
 ###### Creation of table  - 'users'
