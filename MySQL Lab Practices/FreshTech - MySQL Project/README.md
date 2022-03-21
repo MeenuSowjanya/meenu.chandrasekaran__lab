@@ -22,7 +22,7 @@ use FreshTech;
 create table users(user_id tinyint primary key auto_increment,user_name varchar(20) not null check(length(user_name)>=3),user_mailId varchar(50) not null unique check(user_mailId like("_%@gmail.com")),user_password varchar(15) not null check(validate_password_strength(user_password)=100),join_date date not null);
 ```
 
-<br>
+
 
 ```
 desc users;
@@ -539,7 +539,7 @@ insert into queries(stu_id,description) values(8,"Hi coaches.How can I cope up w
 create table feedbacks(f_id tinyint primary key auto_increment,user_ID tinyint,foreign key(user_ID) references users(user_id),description varchar(500));
 ```
  
- <br>
+ 
  
  ```
  desc feedbacks;
@@ -555,7 +555,9 @@ create table feedbacks(f_id tinyint primary key auto_increment,user_ID tinyint,f
  
  ###### Fetching the data from 'feedbacks' table 
  
- ```select f_id,user_ID,description from feedbacks;```
+ ```
+ select f_id,user_ID,description from feedbacks;
+ ```
  
  ![image](https://user-images.githubusercontent.com/93571047/159121906-a603f4b1-738a-49f7-aeec-72c5e7d123e1.png)
  
@@ -583,25 +585,25 @@ create table feedbacks(f_id tinyint primary key auto_increment,user_ID tinyint,f
 create unique index user_mail on users(user_mailId);
 ```
 
-<br>
+
 
 ```
 create unique index s_id on students(student_id);
 ```
 
-<br>
+
 
 ```
 create unique index a_id on admins(admin_id);
 ```
 
-<br>
+
 
 ```
 create unique index stu_id on reports(student_id);
 ```
 
-<br>
+
 
 ```
 create unique index sub_id on subjects(subject_id);
@@ -613,7 +615,7 @@ create unique index sub_id on subjects(subject_id);
 use information_schema;
 ```
 
- <br>
+
  
  ```
  select * from statistics where TABLE_SCHEMA="FreshTech";
@@ -629,7 +631,7 @@ use information_schema;
  create view `outstanding students` as select users.user_name from users,reports where users.user_id=reports.student_id and concat(`Self-learning`,`Helping peers`,`Interactive in Class`,`Takes leadership`,`Completes assignment on time`)="Role ModelRole ModelRole ModelRole ModelRole Model";
  ```
  
- <br>
+ 
  
  ```
  desc `outstanding students`;
