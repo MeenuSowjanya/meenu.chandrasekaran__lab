@@ -12,7 +12,6 @@ show databases;
 create database FreshTech;
 ```
 
-<br>
 
 ###### Using the database - 'FreshTech'
 
@@ -20,7 +19,6 @@ create database FreshTech;
 use FreshTech;
 ```
 
-<br>
 
 ###### Dropping the database - 'FreshTech'
 
