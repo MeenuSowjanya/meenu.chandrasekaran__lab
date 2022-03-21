@@ -4,7 +4,9 @@
 
 ###### Creation of database - 'FreshTech'
 
- ```create database FreshTech;```
+ ```
+ create database FreshTech;
+ ```
 
 ###### Using database - FreshTech
 
