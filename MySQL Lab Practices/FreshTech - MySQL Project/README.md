@@ -414,7 +414,7 @@
 
 ## ER Model
 
-![Untitled presentation (3)](https://user-images.githubusercontent.com/93571047/158826910-e7b566f3-d8b2-4923-b034-7247e1bf99a2.png)
+![ER model FRESHTECH](https://user-images.githubusercontent.com/93571047/159204550-3b1e2dd3-c28a-400e-ac55-e0781d7e6827.png)
 
 <hr>
 
