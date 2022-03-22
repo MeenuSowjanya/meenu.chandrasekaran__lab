@@ -153,6 +153,51 @@ mysql> select * from admins;
 +----------+--------+----------------+------------+
 4 rows in set (0.00 sec)
 
+mysql> create table privileges(privilege_id tinyint primary key auto_increment,privilege_name varchar(30) unique not null);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc privileges;
++----------------+-------------+------+-----+---------+----------------+
+| Field          | Type        | Null | Key | Default | Extra          |
++----------------+-------------+------+-----+---------+----------------+
+| privilege_id   | tinyint     | NO   | PRI | NULL    | auto_increment |
+| privilege_name | varchar(30) | NO   | UNI | NULL    |                |
++----------------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into privileges(privilege_name) values("CRED"),("Coach"),("Contractor"),("Review Team");
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select privilege_id,privilege_name from privileges;
++--------------+----------------+
+| privilege_id | privilege_name |
++--------------+----------------+
+|            2 | Coach          |
+|            3 | Contractor     |
+|            1 | CRED           |
+|            4 | Review Team    |
++--------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> create table admin_privileges(admin_id tinyint not null,privilege_id tinyint not null,foreign key(admin_id) references admins(admin_id),foreign key(privilege_id) references privileges(privilege_id));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into admin_privileges values(1,1),(2,1),(3,2),(4,1);
+Query OK, 4 rows affected (0.02 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select admin_id,privilege_id from admin_privileges;
++----------+--------------+
+| admin_id | privilege_id |
++----------+--------------+
+|        1 |            1 |
+|        2 |            1 |
+|        3 |            2 |
+|        4 |            1 |
++----------+--------------+
+4 rows in set (0.00 sec)
+
 mysql> create table reports(student_Id tinyint not null,month enum('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec') not null,`Self-learning` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null, `Helping peers` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null,`Interactive in Class` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null,`Takes leadership` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null,`Completes assignment on time` enum('Yet To Start','Good','Very Good','Excellent','Role Model') not null, foreign key(student_Id) references users(user_id));```
 mysql> desc reports;
 +------------------------------+-------------------------------------------------------------------------------+------+-----+---------+-------+
