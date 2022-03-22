@@ -47,7 +47,18 @@ delete from users where id between 1 and 4;
  ```
  select user_id,user_name,user_mailId,user_password,join_date from users;
  ```
- 
+###### Truncating the table - 'users'
+
+```
+truncate table users;
+```
+
+###### Altering the table- 'users'
+
+```
+alter table users rename to USERS;
+```
+
 ###### Dropping the table - 'users'
 
 ```
