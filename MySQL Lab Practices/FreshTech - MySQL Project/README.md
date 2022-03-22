@@ -581,7 +581,7 @@ create table feedbacks(f_id tinyint primary key auto_increment,user_ID tinyint,f
 
 ## ER Model
 
-![ER model FRESHTECH](https://user-images.githubusercontent.com/93571047/159204550-3b1e2dd3-c28a-400e-ac55-e0781d7e6827.png)
+![Drawing (2)](https://user-images.githubusercontent.com/93571047/159463397-89573da5-b245-4e34-89bd-3e994fac66ed.png)
 
 <hr>
 
