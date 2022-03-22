@@ -574,7 +574,8 @@ create table feedbacks(f_id tinyint primary key auto_increment,user_ID tinyint,f
 
 ## EER Model - FreshTech
 
-<a href="./FreshTech Schema/FreshTech - EER Model.mwb">![EER Model](https://user-images.githubusercontent.com/93571047/159122049-02be6379-76fc-45d2-8ec2-97cc434f8870.png)</a>
+<a href="./FreshTech Schema/FreshTech - EER Model.mwb">![ms](https://user-images.githubusercontent.com/93571047/159463053-4c7bd3f9-1431-472b-9c43-65d250134cdd.png)
+</a>
 
 <hr>
 
