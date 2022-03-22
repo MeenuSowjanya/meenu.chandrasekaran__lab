@@ -45,7 +45,19 @@ delete from user_contacts where user_name like("P__%");
 ```
 select user_id,user_phoneNo from user_contacts;
 ```
- 
+
+###### Truncating the table - 'user_contacts'
+
+```
+truncate table user_contacts;
+```
+
+###### Altering the table - 'user_contacts'
+
+```
+alter table user_contacts modify user_id smallint;
+```
+
 ###### Dropping the table - 'user_contacts'
 
 ```
