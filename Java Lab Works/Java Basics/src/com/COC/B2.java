@@ -50,7 +50,7 @@ public class B2 {
         System.out.println((alphabet));
 
 
-        // Reference Datatypes - (Array,String,Class,Interface,Enumeration,Annotation) Basics - (Array,String,Class,Interface)    // Refernce datatypes - Objects
+        // Reference Datatypes - (Array,String,Class,Interface,Enumeration,Annotation) Basics - (Array,String,Class,Interface)    // Reference datatypes - Objects
 
         byte[] bytes={0,1,2,3,4};
 

@@ -73,7 +73,7 @@ public class Mathematics {
 	
 	public static void fib(int no) {
 		int no1=0,no2=1,no3;
-		if(no>1) 
+		if(no>=1) 
 		{
 			if(no==1) {
 				System.out.println(no1);
