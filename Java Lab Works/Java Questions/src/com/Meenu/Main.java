@@ -29,6 +29,9 @@ public class Main {
        //Armstrong number
        System.out.println("Enter the number : ");
        System.out.println(Mathematics.armstrong(input.nextInt()));
+       
+       // Fibanocci
+       Mathematics.fib(input.nextInt());
     }
    
 }

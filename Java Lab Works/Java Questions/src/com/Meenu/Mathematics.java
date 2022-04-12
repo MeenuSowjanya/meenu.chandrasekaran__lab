@@ -12,9 +12,13 @@ public class Mathematics {
 	
 	public static int factorial(int number) {
 		int temp=1;
+		if(number==0) {
+			temp=1;
+		}
+		else {
 		for(int i=1;i<=number;i++) {
 			temp*=i;
-		}
+		}}	
 		return temp;
 	}
 	
@@ -63,7 +67,31 @@ public class Mathematics {
 		}
 		return (output);
 		
+	}
+	
+	//fibanocci series
+	
+	public static void fib(int no) {
+		int no1=0,no2=1,no3;
+		if(no>1) 
+		{
+			if(no==1) {
+				System.out.println(no1);
+			}
+			else if(no==2) {
+				System.out.println(no1+" "+no2);
+			}
+			else if(no>2) {
+				System.out.println(no1+" "+no2);
+				for(int i=2;i<no;i++) {
+					no3=no1+no2;
+					System.out.println(" "+no3);
+					no1=no2;
+					no2=no3;
+				}
+			}
 		
+		}
 	}
 	
 }
