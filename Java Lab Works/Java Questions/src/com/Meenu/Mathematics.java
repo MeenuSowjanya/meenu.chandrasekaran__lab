@@ -146,10 +146,11 @@ public class Mathematics {
 		int temp=0;
 		while(number!=0 && number>0) {
 			int fact=1;
-			for(int i=1;i<=(number%10);number++) {
+			for(int i=1;i<=(number%10);i++) {
 				fact*=i;
 			}
 			temp+=fact;
+			number/=10;
 		}
 		System.out.println(temp);
 		if(temp==number) {
