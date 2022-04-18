@@ -94,4 +94,70 @@ public class Mathematics {
 		}
 	}
 	
+	//prime number 
+	
+	public static void prime(int num){ 
+	    int temp;
+	    boolean isPrime=true;
+	    
+		for(int i=2;i<=num/2;i++)
+		{
+	       temp=num%i;
+		   if(temp==0)
+		   {
+		      isPrime=false;
+		      break;
+		   }
+		}
+		if(isPrime)
+		   System.out.println(num + " is a Prime Number");
+		else
+		   System.out.println(num + " is not a Prime Number");
+	   }
+	
+	//perfect number
+	
+	public static void perfect(int n)    
+	{  
+	int sum=0,i=1;    
+	
+	while(i <= n/2)  
+	{  
+	  if(n % i == 0)  
+	  {   
+	   sum+=i;  
+	  } 
+	  i++;  
+	}  
+	  System.out.println(sum);
+	  if(sum==n)  
+	  {  
+	   System.out.println(n+" is a perfect number.");  
+	  } 
+	  else  
+	   {  
+	   System.out.println(n+" is not a perfect number.");   
+	   }	
+	}
+	
+	//strong number
+	
+	public static void strong(int number) {
+		int temp=0;
+		while(number!=0 && number>0) {
+			int fact=1;
+			for(int i=1;i<=(number%10);number++) {
+				fact*=i;
+			}
+			temp+=fact;
+		}
+		System.out.println(temp);
+		if(temp==number) {
+			System.out.println(number+" is a strong number");
+		}
+		else {
+			System.out.println(number+" is not a strong number");
+		}
+	}
+	
 }

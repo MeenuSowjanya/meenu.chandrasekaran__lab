@@ -32,6 +32,18 @@ public class Main {
        
        // Fibanocci
        Mathematics.fib(input.nextInt());
+       
+       // Prime or not
+       System.out.println("Enter the number : ");
+       Mathematics.prime(input.nextInt());
+       
+       // Perfect or not
+       System.out.println("Enter the number : ");
+       Mathematics.perfect(input.nextInt());
+       
+       // Strong or not
+       System.out.println("Enter the number : ");
+       Mathematics.strong(input.nextInt());
     }
    
 }
