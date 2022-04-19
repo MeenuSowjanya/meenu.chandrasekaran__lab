@@ -3,7 +3,7 @@ package com.Meenu;
 import java.util.*;
 import java.lang.Math;
 
-public class Main {
+public class Outputs {
 
     public static void main(String[] args) { 
     	
