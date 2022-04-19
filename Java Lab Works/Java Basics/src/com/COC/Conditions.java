@@ -2,7 +2,7 @@ package com.COC;
 
 import java.util.Scanner;
 
-public class B5{
+public class Conditions{
 
   public static void main(String[] args){
 

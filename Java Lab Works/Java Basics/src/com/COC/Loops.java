@@ -1,6 +1,6 @@
 package com.COC;
 
-public class B4{
+public class Loops{
  public static void main(String[] args){
     // for loop
     for(byte i=0;i<10;i+=2){

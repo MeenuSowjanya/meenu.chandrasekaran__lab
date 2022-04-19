@@ -2,7 +2,7 @@ package com.COC;
 
 import java.util.Scanner;
 
-public class B3 {
+public class Math {
 
     public static void main(String[] args){
 

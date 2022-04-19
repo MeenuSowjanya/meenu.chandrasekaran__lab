@@ -15,7 +15,7 @@ import java.util.Locale;
 
 // To declare the line is completed, we always use ;. So ; is must
 
-public class B2 {
+public class Datatypes {
 
     public static void main(String[] args){
         // Primitive Datatypes - (byte,short,int,long,double,float,char,boolean)    // Primitive datatypes - Variables 

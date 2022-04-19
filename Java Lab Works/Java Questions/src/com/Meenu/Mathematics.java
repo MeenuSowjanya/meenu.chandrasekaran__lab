@@ -143,21 +143,22 @@ public class Mathematics {
 	//strong number
 	
 	public static void strong(int number) {
-		int temp=0;
+		int temp=0,tno=number;
 		while(number!=0 && number>0) {
 			int fact=1;
 			for(int i=1;i<=(number%10);i++) {
 				fact*=i;
 			}
 			temp+=fact;
+			System.out.println(temp);
 			number/=10;
 		}
 		System.out.println(temp);
-		if(temp==number) {
-			System.out.println(number+" is a strong number");
+		if(temp==tno) {
+			System.out.println(tno+" is a strong number");
 		}
 		else {
-			System.out.println(number+" is not a strong number");
+			System.out.println(tno+" is not a strong number");
 		}
 	}
 	
