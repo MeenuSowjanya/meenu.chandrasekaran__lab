@@ -1,11 +1,14 @@
 package com.Meenu;
 
+import java.util.Arrays;
+
 public class Array {
   
 	
     public static void main(String[] args) {
 		duplicates();
 		sortArray();
+		addElement(12,3);
 	}
     
     // duplicates
@@ -28,7 +31,7 @@ public class Array {
     
     // Sorting array
     public static void sortArray() {
-    	int[] arr = new int[] {78, 34, 1, 3, 90, 34, -1, -4}; 
+    	int[] arr ={78, 34, 1, 3, 90, 34, -1, -4}; 
     	System.out.print("The Reversed Array is : {");
     	for (int i = 0; i < arr.length; i++) {  
     	  for (int j = i + 1; j < arr.length; j++) {  
@@ -45,5 +48,20 @@ public class Array {
 
     }
     	System.out.print("}");
+   }
+    
+   // Inserting an element in the specified index in an array
+   public static void addElement(int element,int index) {
+	   int[] array= {1,5,7,19};
+	   int[] newArray=new int[5];
+	   for(int i=0;i<index;i++) {
+		   newArray[i]=array[i];
+	   }
+	   newArray[index]=element;
+	   for(int j=(index);j<array.length;j++) {
+		   newArray[j+1]=array[j];
+	   }
+	   array=newArray;
+	   System.out.println("\n"+Arrays.toString(array));
    }
 }
