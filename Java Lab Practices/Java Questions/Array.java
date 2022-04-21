@@ -32,7 +32,7 @@ public class Array {
     // Sorting array
     public static void sortArray() {
     	int[] arr ={78, 34, 1, 3, 90, 34, -1, -4}; 
-    	System.out.print("The Reversed Array is : {");
+    	System.out.print("The Reversed Array is : [");
     	for (int i = 0; i < arr.length; i++) {  
     	  for (int j = i + 1; j < arr.length; j++) {  
     	    int temp = 0;  
@@ -42,12 +42,14 @@ public class Array {
     	     arr[j] = temp;  
     	   }  
     	}    
-    	
-    	System.out.print(arr[i]+",");
-    	
-
+    	if(i!=(arr.length-1)) {
+    		System.out.print(arr[i]+",");	
+    	}
+    	else {
+    		System.out.print(arr[i]);
+    	}
     }
-    	System.out.print("}");
+    	System.out.print("]");
    }
     
    // Inserting an element in the specified index in an array
