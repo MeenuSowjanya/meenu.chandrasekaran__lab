@@ -126,7 +126,7 @@ public class W3Resource1<dec_num, quot> {
         return binary_prod_result;
     }
 
-   
+
 }
 
 
