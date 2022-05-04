@@ -16,6 +16,9 @@ class Unboxing{
         int p=iObj3;                      // Autounboxing
         System.out.println("Unboxing : "+j);
         System.out.println("Autoonboxing : "+p);
+        Character iObj4=new Character('s');
+        char character=iObj4.charValue();
+        System.out.println(character);
     }
 }
 
