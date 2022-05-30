@@ -33,3 +33,22 @@ puts class_2.get_const_name
 class_1.set_name("bbb")
 puts class_1.get_name
 puts class_2.get_name
+
+class NEW_CLASS_1
+
+    attr_accessor :cls1name
+    attr_accessor :cls1constname
+
+    @cls1name = 12
+    @@cls1constname = 13
+
+end
+
+cls1 = NEW_CLASS_1.new
+cls2 = NEW_CLASS_1.new
+cls1.cls1name = "ccc"
+puts cls1.cls1name
+puts cls2.cls1name
+cls1.cls1constname = "ddd"
+puts cls1.cls1constname
+puts cls2.cls1constname
