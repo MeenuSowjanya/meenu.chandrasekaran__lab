@@ -25,5 +25,6 @@ puts "Meenu".object_id
 puts :Meenu.object_id
 puts :Meenu.object_id
 
-
+sym_var = :Meenu
+puts sym_var
 # Also the efficiency of symbol is high because it has only one reference
