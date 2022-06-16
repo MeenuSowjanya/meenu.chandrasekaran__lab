@@ -37,13 +37,11 @@ class Todo
   def to_displayable_string
     
         str = (@completed) ? "[X]" : "[ ]"
+        date = (rec.completion) ? nil : "#{rec.due_date}"
         return "#{str} #{@text}"
 
   end
 
-  def show_list
-    
-  end
 
 end
 
