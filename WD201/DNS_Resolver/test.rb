@@ -1,61 +1,63 @@
 
-# def get_command_line_argument
-  
+def get_command_line_argument
 
-#     if ARGV.empty?
-#       puts "Usage: ruby lookup.rb <domain>"
-#       exit
-#     end
+  if ARGV.empty?
+    puts "Usage: ruby lookup.rb <domain>"
+    exit
+  end
+  ARGV.first
 
-#     ARGV.first
-    
-# end
+end
 
-# domain = get_command_line_argument
+
+domain = get_command_line_argument
 
 dns_raw = File.readlines("zone")
 
 def parse_dns(dns_raw)
 
-   
+  valid_record_types = ["A","CNAME"]
 
-   for i in (dns_raw.select {|x| (x[0] != "#") && (x != "\n")})
-
-      dns_records[:RECORD_TYPE].push((i.split(","))[0].strip())
-      dns_records[:SOURCE].push((i.split(","))[1].strip())
-      dns_records[:DESTINATION].push((i.split(","))[2].strip())
-
-   end
-
-   return 
+  dns_raw.
+    select { |line| valid_record_types.include? ((line.split(",")[0])) }.
+    map { |line| line.split(",") }.
+    reject do |record|
+    record.length != 3
+  end
+    .each_with_object({}) do |record, records|
+    records[record[1].strip()] = { record_type: record[0].strip(), destination: record[2].strip() }
+  end
 
 end
 
-# def resolve( dns_records , lookup_chain , domain )
+def resolve(dns_records, lookup_chain, domain)
 
-#     if (dns_records[:SOURCE].include? domain)
+  record = dns_records[domain]
 
-#         index = (dns_records[:SOURCE]).find_index(domain)
+  if (!record)
 
-#         if ((dns_records[:RECORD_TYPE][index]) == "A")
-#          lookup_chain.push((dns_records[:DESTINATION])[index])
+    lookup_chain[0] = "Error: Record not found for " + domain
+    return lookup_chain
 
-#         elsif ((dns_records[:RECORD_TYPE][index]) == "CNAME")
-            
-#          new_domain = (dns_records[:DESTINATION])[index]
-#          resolve( dns_records , lookup_chain , new_domain )
+  elsif record[:record_type] == "A"
 
-#        end
+    return lookup_chain << record[:destination]
 
-#     else       
-#         lookup_chain.push("IP Address not found for the given domain")
-#     end
+  elsif record[:record_type] == "CNAME"
 
-#     return lookup_chain
+    lookup_chain << record[:destination]
+    resolve(dns_records, lookup_chain, record[:destination])
 
-# end
+  else
+
+    lookup_chain[0] = "Invalid record type for " + domain
+    return lookup_chain
+  end
+end
 
 dns_records = parse_dns(dns_raw)
-# lookup_chain = [domain]
-# lookup_chain = resolve(dns_records, lookup_chain, domain)
-# puts lookup_chain.join(" => ")
+
+lookup_chain = [domain]
+lookup_chain = resolve(dns_records, lookup_chain, domain)
+
+puts lookup_chain.join(" => ")

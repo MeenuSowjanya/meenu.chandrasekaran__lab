@@ -43,6 +43,7 @@ def resolve( dns_records , lookup_chain , domain )
         elsif ((dns_records[:RECORD_TYPE][index]) == "CNAME")
             
          new_domain = (dns_records[:DESTINATION])[index]
+         lookup_chain.push(new_domain)
          resolve( dns_records , lookup_chain , new_domain )
 
        end
