@@ -2,7 +2,9 @@ movies = {
  Beast: 5,
  Don: 10
 }
+
 puts "What would you like to do ?"
+
 puts "---Type 'add' to add a movie---" 
 puts "---Type 'update' to update a movie---"
 puts "---Type 'display' to display a movie---"
@@ -11,6 +13,7 @@ puts "---Type 'delete' to delete a movie---"
 choice = gets.chomp
 
 case (choice)
+
 when "add"
     puts "Enter the movie title : "
     title = gets.chomp
@@ -22,6 +25,7 @@ when "add"
     else 
       puts "This movie already exists"
     end
+
 when "update"
     puts "Enter the movie title : "
     title = gets.chomp
@@ -33,6 +37,7 @@ when "update"
     else 
         puts "This movie does not exist"
     end
+
 when "delete"
     puts "Enter the movie title : "
     title = gets.chomp
@@ -42,7 +47,11 @@ when "delete"
     else 
         puts "This movie does not exist"
     end
+
 when "display"
     movies.each {|title,rating| puts "#{title}: #{rating}"}
+
 end
+
+# . to_sym or .intern will type cast a datatype to symbols datatype
      
