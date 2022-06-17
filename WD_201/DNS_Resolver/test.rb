@@ -6,13 +6,22 @@ def get_command_line_argument
     exit
   end
   ARGV.first
-
+  
 end
 
 
 domain = get_command_line_argument
 
 dns_raw = File.readlines("zone")
+
+IP_ADDRESS_REGEX = /^((?:(?:^|\.)(?:\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4})$/
+URL_REGEX = /^((?!-)[A-Za-z0-9-]{1, 63}(?<!-)\\.)+[A-Za-z]{2, 6}$/
+def is_valid_ip_address? ip
+    ip =~ IP_ADDRESS_REGEX
+end
+def is_valid_url? url 
+  url =~ URL_REGEX
+end
 
 def parse_dns(dns_raw)
 
@@ -25,7 +34,9 @@ def parse_dns(dns_raw)
     record.length != 3
   end
     .each_with_object({}) do |record, records|
+    if (((is_valid_ip_address? (records[record[1]].strip)) || (is_valid_url? (records[record[1]].strip)))
     records[record[1].strip()] = { record_type: record[0].strip(), destination: record[2].strip() }
+    end
   end
 
 end
