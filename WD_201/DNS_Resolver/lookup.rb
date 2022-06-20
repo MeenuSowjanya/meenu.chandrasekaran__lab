@@ -50,7 +50,7 @@ def get_command_line_argument
     if (!record)
   
       lookup_chain[0] = "Error: Record not found for " + domain
-      return lookup_chain
+      return lookup_chain 
   
     elsif record[:record_type] == "A"
   
