@@ -1,8 +1,8 @@
 require "./connect_db.rb"
 connect_db!
 
-ActiveRecord::Migration.create_table(:todos) do |t|
-  t.column :todo_text, :text
-  t.column :due_date, :date
-  t.column :completed, :bool
+ActiveRecord::Migration.create_table(:todos) do |rec|
+  rec.column :todo_text, :text
+  rec.column :due_date, :date
+  rec.column :completed, :bool
 end

@@ -16,9 +16,9 @@ def get_new_todo
 end
 
 connect_db!
-h = get_new_todo
-if h
-  new_todo = Todo.add_task(h)
+task = get_new_todo
+if task
+  new_todo = Todo.add_task(task)
   puts "New todo created with id #{new_todo.id}"
   Todo.show_list
 end
