@@ -1,9 +1,7 @@
 require "date"
-
 date = Date.today
 
 class Todo
-
     attr_accessor :text
     attr_accessor :due_date
     attr_accessor :completion
@@ -12,7 +10,7 @@ class Todo
      @text = text
      @due_date = due_date
      @completion = completion
-  end
+   end
 
   def overdue?
         date = Date.today
@@ -21,77 +19,49 @@ class Todo
     
   def due_today?
         date = Date.today
-        
         return (@due_date == date) ? true : false
-
   end
 
   def due_later?
         date = Date.today
-        
         return (@due_date > date) ? true : false
-
   end
 
   
   def to_displayable_string
-    
-        str = (@completed) ? "[X]" : "[ ]"
-        date = (rec.completion) ? nil : "#{rec.due_date}"
-        return "#{str} #{@text}"
-
+        puts "to_string"
+        str = (self.completion) ? "[X] " : "[ ] "
+        "#{str} #{@text}"
   end
-
-
 end
 
-class TodosList
-
+class TodosList 
   def initialize(todos)
-
-    @todos = todos
-
+   @todos = todos
   end
   
   def add(record)
-
-    @todos.push(record)
-
+   @todos.push(record)
   end
 
   def overdue
-
-    TodosList.new(@todos.filter { |todo| todo.overdue? })
-
+   TodosList.new(@todos.filter { |todo| todo.overdue? })
   end  
 
   def due_today
-    
-     TodosList.new(@todos.filter { |todo| todo.due_today? })
-
-    end  
+    TodosList.new(@todos.filter { |todo| todo.due_today? })
+  end  
   
   def due_later
- 
    TodosList.new(@todos.filter { |todo| todo.due_later? })
-
-
   end 
 
   def to_displayable_list
-
     output = []  
-
     @todos.map do |rec|
-       
-        str = (rec.completion) ? "[X]" : "[ ]"
-        date = (rec.completion) ? nil : "#{rec.due_date}"
-        output.push("#{str} #{rec.text} #{date}")
-
-    end
-
-    output
-
+    output.push("#{rec.to_displayable_string} #{date}")
+   end
+   output
   end
 
 end
