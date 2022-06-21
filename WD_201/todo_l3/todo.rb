@@ -29,9 +29,10 @@ class Todo
 
   
   def to_displayable_string
-        puts "to_string"
+        
         str = (self.completion) ? "[X] " : "[ ] "
-        "#{str} #{@text}"
+        date_text = (self.completion || (@due_date == Date.today)) ? nil : @due_date
+        "#{str} #{@text} #{date_text}"
   end
 end
 
@@ -59,10 +60,10 @@ class TodosList
   def to_displayable_list
     output = []  
     @todos.map do |rec|
-    output.push("#{rec.to_displayable_string} #{date}")
+    output.push("#{rec.to_displayable_string}")
    end
    output
-  end
+end
 
 end
 
