@@ -74,6 +74,7 @@ body {
 .TodoItem-checkbox {
    width: 16px;
    height: 16px;
+   margin-right: 10px;
 }
 .TodoItem-overdueLabel {
     margin-left: 10px;
@@ -86,6 +87,16 @@ body {
     margin-left: 8px;
     cursor: pointer;
 }
+.TodoItem-container:hover{
+    background-color: rgb(238, 211, 211);
+    border-radius: 5px;
+}
 .TodoItem-container:hover .TodoItem-delete{
     visibility: visible;
+}
+.TodoItem-remainingDueDate {
+    font-size: 12px;
+    margin-left: 15px;
+    margin-top: 2px;
+    font-weight: lighter;
 }
