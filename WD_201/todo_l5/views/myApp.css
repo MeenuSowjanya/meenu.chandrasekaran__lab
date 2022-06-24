@@ -1,0 +1,45 @@
+body{
+    font-family: sans-serif;
+    padding: 32px;
+    max-width: 600px;
+    margin: 32px auto 0 auto;
+}
+.TodoPageMain{
+    display: flex;
+    /* align-items: center;  Specifically to flex
+    justify-content: center ;  Specifically to flex */
+}
+
+.SplashImage {
+    max-width: 300px;
+}
+.TodoPage-title {
+    font-size: 48px;
+    line-height: 1.6;
+    color: #453C52;
+}
+
+.TodoSection-title {
+    font-size: 34px;
+    line-height: 1.4;
+    color: #453C52;
+}
+
+.TodoSection-todo {
+    font-size: 20px;
+    line-height: 1.2;
+    margin-left: 32px;
+}
+
+.TodoSection {
+    margin-bottom: 32px;
+    margin-left: 32px;
+    padding: 16px;
+    background-color: antiquewhite;
+}
+
+article {
+    /* display: flex; */
+}
+
+/* Typrography scale : 48px, 34px, 24px, 20px, 16px */
