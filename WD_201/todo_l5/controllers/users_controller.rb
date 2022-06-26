@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     user = User.new
   end
@@ -10,6 +11,17 @@ class UsersController < ApplicationController
       render plain: "unsuccessfull"
     end
     
+  end
+  def login
+  end
+
+  def login_check
+    user = User.find_by(email: params[:email], password: params[:password])
+    if user
+      render plain:"successfull"
+    else
+      render plain:"unsuccessfull"
+    end
   end
 
   private 
