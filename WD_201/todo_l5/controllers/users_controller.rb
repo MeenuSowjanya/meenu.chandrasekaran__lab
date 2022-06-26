@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def login_check
-    user = User.find_by(email: params[:email], password: params[:password])
+    user = User.find_by(email: user_params[:email], password: user_params[:password])
     if user
       render plain:"successfull"
     else
