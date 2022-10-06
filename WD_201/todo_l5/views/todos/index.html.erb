@@ -1,0 +1,6 @@
+<form action="todos/create" method="post">
+  <input type="hidden" name="authenticity_token" value=<%=form_authenticity_token%>>
+  <label>Todo Text : </label><input type="text" name="todo[todo_text]" placeholder="Please enter the task : ">
+  <label>Due Date : </label><input type="date" name="todo[due_date]" placeholder="Please enter the due date: ">
+  <input type="submit" value="Submit">
+</form>

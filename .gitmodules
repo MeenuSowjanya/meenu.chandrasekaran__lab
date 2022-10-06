@@ -1,0 +1,9 @@
+[submodule "WD_201/cafetaria_rails"]
+	path = WD_201/cafetaria_rails
+	url = https://github.com/MeenuSowjanya/cafetaria_management_app
+[submodule "WD_201/cafetaria_rails_app"]
+	path = WD_201/cafetaria_rails_app
+	url = https://github.com/MeenuSowjanya/cafetaria_management_app
+[submodule "WD_201/todo_rails_app"]
+	path = WD_201/todo_rails_app
+	url = https://github.com/MeenuSowjanya/todo-app-rails

@@ -1,0 +1,1 @@
+"L".upto("P") {|alp| puts alp}
